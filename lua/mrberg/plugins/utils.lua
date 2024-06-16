@@ -57,31 +57,41 @@ return {
     },
   },
   {
-    'tris203/precognition.nvim',
-    enabled = false,
+    'tummetott/unimpaired.nvim',
     event = 'VeryLazy',
-    config = {
-      startVisible = true,
-      showBlankVirtLine = true,
-      highlightColor = { link = 'Comment' },
-      hints = {
-        Caret = { text = '^', prio = 2 },
-        Dollar = { text = '$', prio = 1 },
-        MatchingPair = { text = '%', prio = 5 },
-        Zero = { text = '0', prio = 1 },
-        w = { text = 'w', prio = 10 },
-        b = { text = 'b', prio = 9 },
-        e = { text = 'e', prio = 8 },
-        W = { text = 'W', prio = 7 },
-        B = { text = 'B', prio = 6 },
-        E = { text = 'E', prio = 5 },
+    opts = {
+      keymaps = {
+        bnext = {
+          mapping = '<leader>l',
+          description = 'Go to [count] next buffer',
+          dot_repeat = true,
+        },
+        bprevious = {
+          mapping = '<leader>h',
+          description = 'Go to [count] previous buffer',
+          dot_repeat = true,
+        },
+        bfirst = {
+          mapping = '<leader>L',
+          description = 'Go to last buffer',
+        },
+        blast = {
+          mapping = '<leader>l',
+          description = 'Go to first buffer',
+        },
       },
-      gutterHints = {
-        G = { text = 'G', prio = 10 },
-        gg = { text = 'gg', prio = 9 },
-        PrevParagraph = { text = '{', prio = 8 },
-        NextParagraph = { text = '}', prio = 8 },
-      },
+    },
+  },
+  {
+    'Wansmer/treesj',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+    config = function()
+      require('treesj').setup {
+        use_default_keymaps = false,
+      }
+    end,
+    keys = {
+      { '<leader>j', '<Cmd>TSJToggle<CR>', { desc = 'Toggle SJ split' } },
     },
   },
 }
