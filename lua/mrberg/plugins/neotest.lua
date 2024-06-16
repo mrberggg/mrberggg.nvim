@@ -8,14 +8,14 @@ return {
     'nvim-treesitter/nvim-treesitter',
     -- Runners
     'marilari88/neotest-vitest',
-    "nvim-neotest/neotest-python"
+    'nvim-neotest/neotest-python',
   },
   config = function()
     require('neotest').setup {
       adapters = {
-        require("neotest-python")({
+        require 'neotest-python' {
           dap = { justMyCode = false },
-        }),
+        },
         require 'neotest-vitest' {
           -- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
           filter_dir = function(name, rel_path, root)

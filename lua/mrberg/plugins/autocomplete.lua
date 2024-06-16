@@ -11,7 +11,7 @@ return {
       'hrsh7th/cmp-buffer',
       'L3MON4D3/LuaSnip',
       -- Add LSP capabilities
-      "hrsh7th/cmp-nvim-lsp",
+      'hrsh7th/cmp-nvim-lsp',
     },
     config = function(_, opts)
       local cmp = require 'cmp'
@@ -49,7 +49,7 @@ return {
           { name = 'lazydev', group_index = 0 },
         },
         {
-          { name = 'buffer' }
+          { name = 'buffer' },
         },
       }
     end,
@@ -57,42 +57,47 @@ return {
   {
     'windwp/nvim-autopairs',
     cond = not vim.g.vscode,
-    event = "InsertEnter",
-    config = true
+    event = 'InsertEnter',
+    config = true,
   },
   {
-    "windwp/nvim-ts-autotag",
+    'windwp/nvim-ts-autotag',
     cond = not vim.g.vscode,
     lazy = true,
     config = function()
       require('nvim-ts-autotag').setup()
-    end
+    end,
   },
   {
-    "L3MON4D3/LuaSnip",
+    'L3MON4D3/LuaSnip',
     cond = not vim.g.vscode,
     dependencies = {
-      "rafamadriz/friendly-snippets",
-      "saadparwaiz1/cmp_luasnip",
+      'rafamadriz/friendly-snippets',
+      'saadparwaiz1/cmp_luasnip',
     },
     -- follow latest release.
-    version = "v2.*",
+    version = 'v2.*',
     -- install jsregexp (optional!).
-    build = "make install_jsregexp",
+    build = 'make install_jsregexp',
     config = function()
-      local ls = require("luasnip")
-      require("luasnip.loaders.from_vscode").lazy_load()
+      local ls = require 'luasnip'
+      require('luasnip.loaders.from_vscode').lazy_load()
 
+      vim.keymap.set({ 'i' }, '<C-s>', function()
+        ls.expand()
+      end, { silent = true })
+      vim.keymap.set({ 'i', 's' }, '<C-L>', function()
+        ls.jump(1)
+      end, { silent = true })
+      vim.keymap.set({ 'i', 's' }, '<C-J>', function()
+        ls.jump(-1)
+      end, { silent = true })
 
-      vim.keymap.set({ "i" }, "<C-s>", function() ls.expand() end, { silent = true })
-      vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
-      vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
-
-      vim.keymap.set({ "i", "s" }, "<C-E>", function()
+      vim.keymap.set({ 'i', 's' }, '<C-E>', function()
         if ls.choice_active() then
           ls.change_choice(1)
         end
       end, { silent = true })
-    end
-  }
+    end,
+  },
 }

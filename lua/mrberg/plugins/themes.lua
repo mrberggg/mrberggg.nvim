@@ -1,45 +1,45 @@
 return {
   {
-    "catppuccin/nvim",
+    'catppuccin/nvim',
     cond = not vim.g.vscode,
-    name = "catppuccin",
+    name = 'catppuccin',
     lazy = false,
     priority = 1000,
     opts = {
-      flavour = "macchiato",
-    }
+      flavour = 'macchiato',
+    },
   },
   {
-    "folke/tokyonight.nvim",
+    'folke/tokyonight.nvim',
     cond = not vim.g.vscode,
     lazy = false,
     priority = 1000,
     opts = {
-      style = "storm"
-    }
+      style = 'storm',
+    },
   },
-  { "rebelot/kanagawa.nvim",    cond = not vim.g.vscode, lazy = false, priority = 1000 },
-  { "ellisonleao/gruvbox.nvim", cond = not vim.g.vscode, lazy = false, priority = 1000 },
+  { 'rebelot/kanagawa.nvim', cond = not vim.g.vscode, lazy = false, priority = 1000 },
+  { 'ellisonleao/gruvbox.nvim', cond = not vim.g.vscode, lazy = false, priority = 1000 },
   {
-    "zaldih/themery.nvim",
+    'zaldih/themery.nvim',
     cond = not vim.g.vscode,
     opts = {
-      themes = { "catppuccin", "kanagawa", "tokyonight", "gruvbox" },
-      themeConfigFile = "~/.config/nvim/lua/mrberg/core/theme.lua",
+      themes = { 'catppuccin', 'kanagawa', 'tokyonight', 'gruvbox' },
+      themeConfigFile = '~/.config/nvim/lua/mrberg/core/theme.lua',
       livePreview = true,
     },
     keys = {
-      { "<leader>ts", "<cmd>Themery<CR>" },
+      { '<leader>ts', '<cmd>Themery<CR>' },
     },
   },
   {
-    "rachartier/tiny-devicons-auto-colors.nvim",
+    'rachartier/tiny-devicons-auto-colors.nvim',
     dependencies = {
-      "nvim-tree/nvim-web-devicons"
+      'nvim-tree/nvim-web-devicons',
     },
-    event = "VeryLazy",
+    event = 'VeryLazy',
     config = function()
       require('tiny-devicons-auto-colors').setup()
-    end
-  }
+    end,
+  },
 }

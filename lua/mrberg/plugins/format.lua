@@ -4,7 +4,7 @@ return {
     cond = not vim.g.vscode,
     lazy = false,
     config = function()
-      require('conform').setup({
+      require('conform').setup {
         notify_on_error = true,
         format_on_save = function(bufnr)
           -- Disable "format_on_save lsp_fallback" for languages that don't
@@ -18,13 +18,13 @@ return {
         end,
         formatters_by_ft = {
           lua = { 'stylua' },
-          python = { "black" },
-          javascript = { { "prettierd", "prettier" } },
-          typescript = { { "prettierd", "prettier" } },
-          javascriptreact = { { "prettierd", "prettier" } },
-          typescriptreact = { { "prettierd", "prettier" } },
+          python = { 'black' },
+          javascript = { { 'prettierd', 'prettier' } },
+          typescript = { { 'prettierd', 'prettier' } },
+          javascriptreact = { { 'prettierd', 'prettier' } },
+          typescriptreact = { { 'prettierd', 'prettier' } },
         },
-      })
-    end
+      }
+    end,
   },
 }

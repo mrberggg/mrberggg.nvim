@@ -1,33 +1,33 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    'neovim/nvim-lspconfig',
     cond = not vim.g.vscode,
     lazy = true,
-    event = "VeryLazy",
+    event = 'VeryLazy',
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim',     opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
       {
-        "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
+        'folke/lazydev.nvim',
+        ft = 'lua', -- only load on lua files
         opts = {
           library = {
             -- See the configuration section for more details
             -- Load luvit types when the `vim.uv` word is found
-            { path = "luvit-meta/library", words = { "vim%.uv" } },
+            { path = 'luvit-meta/library', words = { 'vim%.uv' } },
           },
         },
       },
-      { "Bilal2453/luvit-meta",  lazy = true },
-      { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' }
+      { 'Bilal2453/luvit-meta', lazy = true },
+      { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
     },
     config = function()
-      local lspconfig = require('lspconfig')
+      local lspconfig = require 'lspconfig'
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -38,16 +38,16 @@ return {
 
       capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
-        lineFoldingOnly = true
+        lineFoldingOnly = true,
       }
 
-      lspconfig.eslint.setup({})
-      lspconfig.lua_ls.setup({})
-      lspconfig.cssls.setup({})
-      lspconfig.html.setup({})
-      lspconfig.jsonls.setup({})
-      lspconfig.markdown_oxide.setup({})
-      lspconfig.pyright.setup({})
+      lspconfig.eslint.setup {}
+      lspconfig.lua_ls.setup {}
+      lspconfig.cssls.setup {}
+      lspconfig.html.setup {}
+      lspconfig.jsonls.setup {}
+      lspconfig.markdown_oxide.setup {}
+      lspconfig.pyright.setup {}
 
       -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
@@ -150,39 +150,39 @@ return {
           end,
         },
       }
-    end
+    end,
   },
   {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     lazy = false,
     opts = {},
     config = function()
-      require("typescript-tools").setup {
+      require('typescript-tools').setup {
         settings = {
           -- spawn additional tsserver instance to calculate diagnostics on it
           separate_diagnostic_server = true,
-        }
+        },
       }
     end,
     keys = {
-      { "<leader>to", "<Cmd>TSToolsOrganizeImports<CR>",   desc = "[T]ypeScript [O]rganize imports" },
-      { "<leader>ti", "<Cmd>TSToolsAddMissingImports<CR>", desc = "[T]ypeScript [A]dd missing imports" },
-      { "<leader>tf", "<Cmd>TSToolsFixAll<CR>",            desc = "[T]ypeScript fix [a]ll" },
-    }
+      { '<leader>to', '<Cmd>TSToolsOrganizeImports<CR>', desc = '[T]ypeScript [O]rganize imports' },
+      { '<leader>ti', '<Cmd>TSToolsAddMissingImports<CR>', desc = '[T]ypeScript [A]dd missing imports' },
+      { '<leader>tf', '<Cmd>TSToolsFixAll<CR>', desc = '[T]ypeScript fix [a]ll' },
+    },
   },
   {
     'dmmulroy/tsc.nvim',
     cond = not vim.g.vscode,
-    event = "VeryLazy",
+    event = 'VeryLazy',
     config = function()
-      require('tsc').setup({
+      require('tsc').setup {
         run_as_monorepo = true,
         use_diagnostics = true,
-      })
+      }
     end,
     keys = {
-      { "<leader>tsc", "<Cmd>TSC<CR>", desc = "[T]ype[S]cript [C]heck" },
-    }
+      { '<leader>tsc', '<Cmd>TSC<CR>', desc = '[T]ype[S]cript [C]heck' },
+    },
   },
 }

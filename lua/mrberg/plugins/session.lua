@@ -1,8 +1,8 @@
 return {
   {
-    "folke/persistence.nvim",
+    'folke/persistence.nvim',
     cond = not vim.g.vscode,
-    event = "BufReadPre",
+    event = 'BufReadPre',
     opts = {},
-  }
+  },
 }

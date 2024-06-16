@@ -1,21 +1,21 @@
 return {
   {
-    "f-person/git-blame.nvim",
+    'f-person/git-blame.nvim',
     cond = not vim.g.vscode,
     lazy = true,
-    event = "BufEnter",
+    event = 'BufEnter',
     opts = {
       enabled = false,
     },
     keys = {
-      { '<leader>gb', '<cmd>GitBlameToggle<CR>', desc = "Toggle git blame" },
-    }
+      { '<leader>gb', '<cmd>GitBlameToggle<CR>', desc = 'Toggle git blame' },
+    },
   },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     cond = not vim.g.vscode,
     lazy = true,
-    event = "BufEnter",
+    event = 'BufEnter',
     config = function()
       require('gitsigns').setup()
     end,
@@ -30,42 +30,42 @@ return {
     },
   },
   {
-    "kdheepak/lazygit.nvim",
+    'kdheepak/lazygit.nvim',
     cond = not vim.g.vscode,
-    dependencies = { "nvim-lua/plenary.nvim", },
+    dependencies = { 'nvim-lua/plenary.nvim' },
     cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
     },
     keys = {
-      { "<leader>gg", "<Cmd>LazyGit<CR>", desc = "LazyGit" },
-    }
+      { '<leader>gg', '<Cmd>LazyGit<CR>', desc = 'LazyGit' },
+    },
   },
   {
-    "sindrets/diffview.nvim",
+    'sindrets/diffview.nvim',
     cond = not vim.g.vscode,
     lazy = true,
     setup = function()
-      require("diffview").setup({
+      require('diffview').setup {
         enhanced_diff_hl = true,
         use_icons = true,
         view = {
           merge_tool = {
-            layout = "diff3_horizontal",
+            layout = 'diff3_horizontal',
             winbar_info = true,
             disable_diagnostics = true,
           },
         },
-      })
+      }
     end,
     keys = {
       {
-        "<leader>gd",
+        '<leader>gd',
         function()
-          local lib = require("diffview.lib")
+          local lib = require 'diffview.lib'
           local view = lib.get_current_view()
           if view then
             vim.cmd.DiffviewClose()
@@ -73,7 +73,7 @@ return {
             vim.cmd.DiffviewOpen()
           end
         end,
-        desc = "Diffview",
+        desc = 'Diffview',
       },
     },
   },

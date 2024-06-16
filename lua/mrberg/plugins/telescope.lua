@@ -6,19 +6,19 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-ui-select.nvim' },
-    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   config = function()
-    local telescope = require('telescope')
+    local telescope = require 'telescope'
     telescope.setup {
       pickers = {
         help_tags = {
           mappings = {
             n = {
-              ["<CR>"] = "file_vsplit",
+              ['<CR>'] = 'file_vsplit',
             },
             i = {
-              ["<CR>"] = "file_vsplit",
+              ['<CR>'] = 'file_vsplit',
             },
           },
         },
@@ -29,139 +29,139 @@ return {
         },
       },
       defaults = {
-        initial_mode = "normal",
-        theme = "center",
-        sorting_strategy = "ascending",
-        prompt_prefix = "󰼛 ",
-        selection_caret = "󱞩 ",
+        initial_mode = 'normal',
+        theme = 'center',
+        sorting_strategy = 'ascending',
+        prompt_prefix = '󰼛 ',
+        selection_caret = '󱞩 ',
         layout_config = {
           horizontal = {
-            prompt_position = "top",
+            prompt_position = 'top',
             preview_width = 0.3,
           },
         },
         path_display = {
-          "smart"
-        }
+          'smart',
+        },
       },
     }
 
-    telescope.load_extension('projects')
+    telescope.load_extension 'projects'
   end,
   keys = {
     {
-      "<leader>fw",
+      '<leader>fw',
       function()
-        require('telescope.builtin').live_grep({
-          initial_mode = "insert",
-          glob_pattern = { "*.tsx", "!*.test.tsx" }
-        })
+        require('telescope.builtin').live_grep {
+          initial_mode = 'insert',
+          glob_pattern = { '*.tsx', '!*.test.tsx' },
+        }
       end,
       mode = { 'n' },
-      desc = '[F]ind [W]ord (.tsx)'
+      desc = '[F]ind [W]ord (.tsx)',
     },
     {
-      "<leader>fa",
+      '<leader>fa',
       function()
-        require('telescope.builtin').live_grep({ initial_mode = "insert" })
+        require('telescope.builtin').live_grep { initial_mode = 'insert' }
       end,
       mode = { 'n' },
-      desc = '[F]ind [A]ll words'
+      desc = '[F]ind [A]ll words',
     },
     {
-      "<leader>ff",
+      '<leader>ff',
       function()
-        require("telescope.builtin").find_files({ initial_mode = "insert", file_ignore_patterns = { "__tests__", ".test.ts*" } })
+        require('telescope.builtin').find_files { initial_mode = 'insert', file_ignore_patterns = { '__tests__', '.test.ts*' } }
       end,
       mode = { 'n' },
-      desc = '[F]ind [F]iles'
+      desc = '[F]ind [F]iles',
     },
     {
-      "<leader>ft",
+      '<leader>ft',
       function()
-        require("telescope.builtin").find_files({ initial_mode = "insert", file_ignore_patterns = { "not .test.ts*" } })
+        require('telescope.builtin').find_files { initial_mode = 'insert', file_ignore_patterns = { 'not .test.ts*' } }
       end,
       mode = { 'n' },
-      desc = '[F]ind [T]est files'
+      desc = '[F]ind [T]est files',
     },
     {
-      "<leader><leader>",
+      '<leader><leader>',
       function()
-        require("telescope.builtin").buffers()
+        require('telescope.builtin').buffers()
       end,
       mode = { 'n' },
-      desc = '[ ] Find existing buffers'
+      desc = '[ ] Find existing buffers',
     },
     {
-      "<leader>fo",
+      '<leader>fo',
       function()
-        require("telescope.builtin").oldfiles()
+        require('telescope.builtin').oldfiles()
       end,
       mode = { 'n' },
-      desc = '[F]ind [O]ld Files'
+      desc = '[F]ind [O]ld Files',
     },
     {
-      "<leader>fr",
+      '<leader>fr',
       function()
-        require("telescope.builtin").resume()
+        require('telescope.builtin').resume()
       end,
       mode = { 'n' },
-      desc = '[F]ind [R]esume'
+      desc = '[F]ind [R]esume',
     },
     {
-      "<leader>fp",
+      '<leader>fp',
       function()
-        require 'telescope'.extensions.projects.projects {}
+        require('telescope').extensions.projects.projects {}
       end,
       mode = { 'n' },
-      desc = '[F]ind [R]esume'
+      desc = '[F]ind [R]esume',
     },
     {
-      "<leader>fs",
+      '<leader>fs',
       function()
-        require("telescope.builtin").treesitter()
+        require('telescope.builtin').treesitter { initial_mode = 'insert' }
       end,
       mode = { 'n' },
-      desc = '[F]ind [S]ymbol'
+      desc = '[F]ind [S]ymbol',
     },
     {
-      "<leader>fh",
+      '<leader>fh',
       function()
-        require("telescope.builtin").help_tags({ initial_mode = "insert" })
+        require('telescope.builtin').help_tags { initial_mode = 'insert' }
       end,
       mode = { 'n' },
-      desc = '[F]ind [H]elp'
+      desc = '[F]ind [H]elp',
     },
     {
-      "<leader>fk",
+      '<leader>fk',
       function()
-        require("telescope.builtin").keymaps({ initial_mode = "insert" })
+        require('telescope.builtin').keymaps { initial_mode = 'insert' }
       end,
       mode = { 'n' },
-      desc = '[F]ind [K]eymaps'
+      desc = '[F]ind [K]eymaps',
     },
     {
       '<leader>fc',
       function()
-        require("telescope.builtin").find_files { cwd = vim.fn.stdpath 'config' }
+        require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }
       end,
       mode = { 'n' },
-      desc = '[F]ind [C]onfig files'
+      desc = '[F]ind [C]onfig files',
     },
     {
       -- TODO
-      "<leader>gco",
+      '<leader>gco',
       function()
-        require("telescope.builtin").git_branches()
+        require('telescope.builtin').git_branches()
       end,
       mode = { 'n' },
       desc = '[G]it [C]heck[o]ut Branch',
     },
     {
       -- TODO
-      "<leader>gst",
+      '<leader>gst',
       function()
-        require("telescope.builtin").git_status()
+        require('telescope.builtin').git_status()
       end,
       mode = { 'n' },
       desc = '[G]it [St]atus',
