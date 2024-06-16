@@ -48,8 +48,6 @@ require 'mrberg.core.keymaps'
 
 if vim.g.vscode then
   require 'mrberg.core.keymaps-vscode'
-else
-  require 'mrberg.core.theme'
 end
 
 -- TODO:
