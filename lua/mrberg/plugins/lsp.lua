@@ -9,7 +9,7 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',     opts = {} },
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
       {
@@ -23,7 +23,7 @@ return {
           },
         },
       },
-      { 'Bilal2453/luvit-meta', lazy = true },
+      { 'Bilal2453/luvit-meta',  lazy = true },
       { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
     },
     config = function()
@@ -153,36 +153,33 @@ return {
     end,
   },
   {
-    'pmizio/typescript-tools.nvim',
+    'yioneko/nvim-vtsls',
+    cond = not vim.g.vscode,
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     lazy = false,
-    opts = {},
-    config = function()
-      require('typescript-tools').setup {
-        settings = {
-          -- spawn additional tsserver instance to calculate diagnostics on it
-          separate_diagnostic_server = true,
+    opts = {
+      settings = {
+        typescript = {
+          inlayHints = {
+            parameterNames = { enabled = 'literals' },
+            parameterTypes = { enabled = true },
+            variableTypes = { enabled = true },
+            propertyDeclarationTypes = { enabled = true },
+            functionLikeReturnTypes = { enabled = true },
+            enumMemberValues = { enabled = true },
+          },
         },
-      }
-    end,
-    keys = {
-      { '<leader>to', '<Cmd>TSToolsOrganizeImports<CR>', desc = '[T]ypeScript [O]rganize imports' },
-      { '<leader>ti', '<Cmd>TSToolsAddMissingImports<CR>', desc = '[T]ypeScript [A]dd missing imports' },
-      { '<leader>tf', '<Cmd>TSToolsFixAll<CR>', desc = '[T]ypeScript fix [a]ll' },
+      },
     },
-  },
-  {
-    'dmmulroy/tsc.nvim',
-    cond = not vim.g.vscode,
-    event = 'VeryLazy',
     config = function()
-      require('tsc').setup {
-        run_as_monorepo = true,
-        use_diagnostics = true,
-      }
+      require('lspconfig.configs').vtsls = require('vtsls')
+      .lspconfig                                                      -- set default server config, optional but recommended
     end,
     keys = {
-      { '<leader>tsc', '<Cmd>TSC<CR>', desc = '[T]ype[S]cript [C]heck' },
+      -- { '<leader>to', '<Cmd>VtsExec add_missing_imports<CR><Cmd>VtsExec remove_unused_imports<CR>', desc = '[T]ypeScript [R]emove unused imports' },
+      { '<leader>tr', '<Cmd>VtsExec remove_unused_imports<CR>', desc = '[T]ypeScript [R]emove unused imports' },
+      { '<leader>ti', '<Cmd>VtsExec add_missing_imports<CR>',   desc = '[T]ypeScript [A]dd missing imports' },
+      { '<leader>tf', '<Cmd>VtsExec fix_all<CR>',               desc = '[T]ypeScript fix [a]ll' },
     },
   },
 }

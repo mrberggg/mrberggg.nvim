@@ -44,20 +44,15 @@ require('lazy').setup({
 -- [[ Include config files ]]
 require 'mrberg.core.options'
 require 'mrberg.core.autocommands'
-require 'mrberg.core.keymaps'
 
 if vim.g.vscode then
   require 'mrberg.core.keymaps-vscode'
+else
+  require 'mrberg.core.keymaps'
 end
 
 -- TODO:
--- coerce nvim
 -- https://github.com/mfussenegger/nvim-dap
 -- https://github.com/mrjones2014/smart-splits.nvim
 -- https://github.com/omerxx/tmux-sessionx
---
--- https://github.com/marilari88/neotest-vitest?tab=readme-ov-file
--- https://github.com/Wansmer/treesj
--- https://github.com/stevearc/aerial.nvim
 -- https://github.com/rafcamlet/nvim-luapad
--- https://github.com/tpope/vim-unimpaired

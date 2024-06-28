@@ -77,14 +77,6 @@ return {
       desc = '[F]ind [F]iles',
     },
     {
-      '<leader>ft',
-      function()
-        require('telescope.builtin').find_files { initial_mode = 'insert', file_ignore_patterns = { 'not .test.ts*' } }
-      end,
-      mode = { 'n' },
-      desc = '[F]ind [T]est files',
-    },
-    {
       '<leader><leader>',
       function()
         require('telescope.builtin').buffers()

@@ -11,9 +11,11 @@ vim.keymap.set('n', '<leader>u', '<C-^>', { desc = 'Reopen previous buffer' })
 vim.keymap.set({ 'n', 'v' }, '<leader>/', 'gcc', { desc = 'Comment', remap = true })
 
 -- Diagnostics
-vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config { virtual_text = false }
 
-vim.keymap.set('n', '<leader>se', '<CMD>lua vim.diagnostic.config({virtual_text = true })<CR>',
-  { desc = 'Show error virtual text' })
-vim.keymap.set('n', '<leader>he', '<CMD>lua vim.diagnostic.config({virtual_text = false })<CR>',
-  { desc = 'Hide error virtual text' })
+vim.keymap.set('n', '<leader>se', '<CMD>lua vim.diagnostic.config({virtual_text = true })<CR>', { desc = 'Show error virtual text' })
+vim.keymap.set('n', '<leader>he', '<CMD>lua vim.diagnostic.config({virtual_text = false })<CR>', { desc = 'Hide error virtual text' })
+
+vim.keymap.set('n', '<leader>i', function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { 0 }, { 0 })
+end, { desc = 'Toggle inlay hints' })
