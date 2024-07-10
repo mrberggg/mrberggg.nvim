@@ -158,5 +158,13 @@ return {
       mode = { 'n' },
       desc = '[G]it [St]atus',
     },
+    {
+      '<leader>fn',
+      function()
+        return vim.cmd 'ObsidianQuickSwitch'
+      end,
+      mode = { 'n' },
+      desc = '[F]ind [N]ote',
+    },
   },
 }
