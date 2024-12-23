@@ -16,3 +16,5 @@ end, { desc = 'Find file' })
 vim.keymap.set('n', '<leader>rn', function()
   vscode.call('editor.action.rename')
 end, { desc = 'Find in files' })
+
+vim.keymap.set('n', '<leader>tl', '<Cmd>set invrelativenumber<CR>', { desc = 'Toggle relative numbers' })

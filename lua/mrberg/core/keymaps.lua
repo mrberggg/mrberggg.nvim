@@ -19,3 +19,5 @@ vim.keymap.set('n', '<leader>he', '<CMD>lua vim.diagnostic.config({virtual_text 
 vim.keymap.set('n', '<leader>i', function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { 0 }, { 0 })
 end, { desc = 'Toggle inlay hints' })
+
+vim.keymap.set('n', '<leader>tl', '<Cmd>set invrelativenumber<CR>', { desc = 'Toggle relative numbers' })

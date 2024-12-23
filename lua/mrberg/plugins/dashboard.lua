@@ -7,7 +7,7 @@ return {
     config = function()
       -- Logo color
       vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#7dc4e4' })
-      local _logo = {
+      local logo = {
         [[                                                    ]],
         [[                                                    ]],
         [[                                                    ]],
@@ -49,7 +49,7 @@ return {
         [[                                                    ]],
       }
 
-      local logo = {
+      local _logo = {
         [[                                                    ]],
         [[                                                    ]],
         [[                                                    ]],
