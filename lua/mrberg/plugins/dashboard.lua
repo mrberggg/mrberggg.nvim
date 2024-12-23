@@ -87,14 +87,6 @@ return {
           icon = ' ',
           key = 's',
         },
-        {
-          action = function()
-            require('telescope').extensions.projects.projects {}
-          end,
-          desc = 'Projects',
-          icon = ' ',
-          key = 'p',
-        },
         { action = 'Lazy update', desc = 'Update Plugins', icon = '󰒲 ', key = 'u' },
         { action = 'qa', desc = ' Quit', icon = ' ', key = 'q' },
       }
