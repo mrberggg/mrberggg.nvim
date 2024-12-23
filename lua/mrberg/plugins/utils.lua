@@ -84,6 +84,7 @@ return {
   },
   {
     'Wansmer/treesj',
+    cond = not vim.g.vscode,
     dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
     config = function()
       require('treesj').setup {
@@ -104,6 +105,7 @@ return {
   },
   {
     "Isrothy/neominimap.nvim",
+    cond = not vim.g.vscode,
     version = "v3.*.*",
     enabled = true,
     lazy = false,
