@@ -17,7 +17,7 @@ return {
   },
   {
     'gregorias/coerce.nvim',
-    tag = 'v1.0',
+    tag = 'v4.1.0',
     lazy = true,
     event = 'BufEnter',
     config = true,
@@ -94,4 +94,34 @@ return {
       { '<leader>j', '<Cmd>TSJToggle<CR>', { desc = 'Toggle SJ split' } },
     },
   },
+  {
+    "Goose97/timber.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("timber").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
+  {
+    "Isrothy/neominimap.nvim",
+    version = "v3.*.*",
+    enabled = true,
+    lazy = false,
+    keys = {
+      { "<leader>no", "<cmd>Neominimap toggle<cr>", desc = "Toggle global minimap" },
+    },
+    init = function()
+      -- The following options are recommended when layout == "float"
+      vim.opt.wrap = false
+      vim.opt.sidescrolloff = 36 -- Set a large value
+
+      --- Put your configuration here
+      ---@type Neominimap.UserConfig
+      vim.g.neominimap = {
+        auto_enable = false,
+      }
+    end,
+  }
 }
