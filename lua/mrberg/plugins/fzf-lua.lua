@@ -111,6 +111,12 @@ return {
       desc = '[F]ind [T]ext',
     },
     {
+      'gD',
+      function()
+        require('fzf-lua').lsp_definitions()
+      end,
+    },
+    {
       'gr',
       function()
         require('fzf-lua').lsp_references()

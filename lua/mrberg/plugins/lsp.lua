@@ -9,7 +9,7 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim',     opts = {} },
+      { 'j-hui/fidget.nvim',    opts = {} },
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
       {
@@ -23,8 +23,7 @@ return {
           },
         },
       },
-      { 'Bilal2453/luvit-meta',  lazy = true },
-      { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
+      { 'Bilal2453/luvit-meta', lazy = true },
     },
     config = function()
       local lspconfig = require 'lspconfig'
@@ -49,12 +48,6 @@ return {
       lspconfig.markdown_oxide.setup {}
       lspconfig.pyright.setup {}
 
-      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-
-      require('ufo').setup()
-
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -67,16 +60,6 @@ return {
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
-
-          -- Jump to the definition of the word under your cursor.
-          --  To jump back, press <C-t>.
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-
-          -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-
-          -- Fuzzy find all the symbols in your current document.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
           -- Rename the variable under your cursor.
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -173,10 +156,9 @@ return {
     },
     config = function()
       require('lspconfig.configs').vtsls = require('vtsls')
-      .lspconfig                                                      -- set default server config, optional but recommended
+          .lspconfig -- set default server config, optional but recommended
     end,
     keys = {
-      -- { '<leader>to', '<Cmd>VtsExec add_missing_imports<CR><Cmd>VtsExec remove_unused_imports<CR>', desc = '[T]ypeScript [R]emove unused imports' },
       { '<leader>tr', '<Cmd>VtsExec remove_unused_imports<CR>', desc = '[T]ypeScript [R]emove unused imports' },
       { '<leader>ti', '<Cmd>VtsExec add_missing_imports<CR>',   desc = '[T]ypeScript [A]dd missing imports' },
       { '<leader>tf', '<Cmd>VtsExec fix_all<CR>',               desc = '[T]ypeScript fix [a]ll' },
