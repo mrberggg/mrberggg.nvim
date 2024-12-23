@@ -99,9 +99,7 @@ return {
     version = "*",
     event = "VeryLazy",
     config = function()
-      require("timber").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
+      require("timber").setup()
     end
   },
   {
@@ -123,5 +121,5 @@ return {
         auto_enable = false,
       }
     end,
-  }
+  },
 }

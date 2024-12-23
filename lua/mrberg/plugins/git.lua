@@ -30,21 +30,6 @@ return {
     },
   },
   {
-    'kdheepak/lazygit.nvim',
-    cond = not vim.g.vscode,
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    cmd = {
-      'LazyGit',
-      'LazyGitConfig',
-      'LazyGitCurrentFile',
-      'LazyGitFilter',
-      'LazyGitFilterCurrentFile',
-    },
-    keys = {
-      { '<leader>gg', '<Cmd>LazyGit<CR>', desc = 'LazyGit' },
-    },
-  },
-  {
     'sindrets/diffview.nvim',
     cond = not vim.g.vscode,
     lazy = true,
