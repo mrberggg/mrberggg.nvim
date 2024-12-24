@@ -17,6 +17,12 @@ return {
     'saghen/blink.cmp',
     version = '*',
     opts = {
+      completion = {
+        list = {
+          selection = 'manual'
+        }
+      },
+
       keymap = {
         preset = 'enter',
         ['<C-j>'] = { 'select_next', 'fallback' },
