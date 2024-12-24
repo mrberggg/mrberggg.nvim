@@ -1,15 +1,5 @@
 return {
   {
-    'rcarriga/nvim-notify',
-    config = function()
-      require('notify').setup {
-        stages = 'fade_in_slide_out',
-        timeout = 3000,
-      }
-      vim.notify = require 'notify'
-    end,
-  },
-  {
     'folke/noice.nvim',
     cond = not vim.g.vscode,
     lazy = true,
@@ -37,52 +27,6 @@ return {
         },
       }
     end,
-  },
-  {
-    'stevearc/dressing.nvim',
-    cond = not vim.g.vscode,
-    lazy = true,
-    event = 'VeryLazy',
-    opts = {
-      input = {
-        insert_only = false,
-        start_in_insert = false,
-      },
-    },
-  },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    cond = not vim.g.vscode,
-    main = 'ibl',
-    opts = {
-      indent = {
-        char = '│',
-        tab_char = '│',
-      },
-      scope = {
-        enabled = true,
-        char = '│',
-        highlight = 'NonText',
-        show_start = true,
-        show_end = true,
-        injected_languages = true,
-      },
-      exclude = {
-        filetypes = {
-          'help',
-          'alpha',
-          'dashboard',
-          'neo-tree',
-          'Trouble',
-          'trouble',
-          'lazy',
-          'mason',
-          'notify',
-          'toggleterm',
-          'lazyterm',
-        },
-      },
-    },
   },
   {
     'brenoprata10/nvim-highlight-colors',
@@ -241,13 +185,6 @@ return {
         },
       }
     end,
-  },
-  {
-    'folke/zen-mode.nvim',
-    config = true,
-    keys = {
-      { '<Leader>z', '<Cmd>ZenMode<CR>', desc = 'Zen Mode' },
-    },
   },
   {
     "sindrets/diffview.nvim",

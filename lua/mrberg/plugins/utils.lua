@@ -1,11 +1,5 @@
 return {
   {
-    'LunarVim/bigfile.nvim',
-    lazy = true,
-    cond = not vim.g.vscode,
-    event = 'BufRead',
-  },
-  {
     'tpope/vim-surround',
     lazy = true,
     event = 'BufEnter',
@@ -42,21 +36,6 @@ return {
     opts = {},
   },
   {
-    'famiu/bufdelete.nvim',
-    cmd = 'Bdelete',
-    keys = {
-      { '<Leader>c', '<Cmd>Bdelete<CR>', desc = 'Close buffer', mode = 'n' },
-      {
-        '<Leader>q',
-        function()
-          vim.cmd 'qa'
-        end,
-        desc = 'Close all buffers',
-        mode = 'n',
-      },
-    },
-  },
-  {
     'tummetott/unimpaired.nvim',
     event = 'VeryLazy',
     opts = {
@@ -83,45 +62,11 @@ return {
     },
   },
   {
-    'Wansmer/treesj',
-    cond = not vim.g.vscode,
-    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
-    config = function()
-      require('treesj').setup {
-        use_default_keymaps = false,
-      }
-    end,
-    keys = {
-      { '<leader>j', '<Cmd>TSJToggle<CR>', { desc = 'Toggle SJ split' } },
-    },
-  },
-  {
     "Goose97/timber.nvim",
     version = "*",
     event = "VeryLazy",
     config = function()
       require("timber").setup()
     end
-  },
-  {
-    "Isrothy/neominimap.nvim",
-    cond = not vim.g.vscode,
-    version = "v3.*.*",
-    enabled = true,
-    lazy = false,
-    keys = {
-      { "<leader>no", "<cmd>Neominimap toggle<cr>", desc = "Toggle global minimap" },
-    },
-    init = function()
-      -- The following options are recommended when layout == "float"
-      vim.opt.wrap = false
-      vim.opt.sidescrolloff = 36 -- Set a large value
-
-      --- Put your configuration here
-      ---@type Neominimap.UserConfig
-      vim.g.neominimap = {
-        auto_enable = false,
-      }
-    end,
   },
 }
