@@ -103,6 +103,14 @@ return {
       desc = '[F]ind [B]uffers',
     },
     {
+      '<leader>fc',
+      function()
+        require('fzf-lua').awesome_colorschemes()
+      end,
+      mode = { 'n' },
+      desc = '[F]ind [C]olorschemes',
+    },
+    {
       '<leader>ft',
       function()
         require('fzf-lua').grep()

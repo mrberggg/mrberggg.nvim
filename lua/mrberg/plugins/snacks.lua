@@ -86,17 +86,25 @@ return {
       }
     },
     scratch      = { enabled = false },
-    scroll       = { enabled = true },
+    scroll       = {
+      enabled = true,
+      animate = {
+        duration = { step = 15, total = 250 },
+        easing = "outQuint",
+      },
+    },
     statuscolumn = { enabled = false },
     words        = { enabled = false },
   },
   keys = {
-    { "<leader>z",  function() Snacks.zen() end,                desc = "Toggle Zen Mode" },
-    { "<leader>c",  function() Snacks.bufdelete() end,          desc = "Delete Buffer" },
-    { "<leader>rn", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-    { "<leader>gb", function() Snacks.git.blame_line() end,     desc = "Git Blame Line" },
-    { "<leader>gg", function() Snacks.lazygit() end,            desc = "Lazygit" },
-    { "<leader>un", function() Snacks.notifier.hide() end,      desc = "Dismiss All Notifications" },
+    { "<leader>z",  function() Snacks.zen() end,                           desc = "Toggle Zen Mode" },
+    { "<leader>c",  function() Snacks.bufdelete() end,                     desc = "Delete Buffer" },
+    { "<leader>rn", function() Snacks.rename.rename_file() end,            desc = "Rename File" },
+    { "<leader>gb", function() Snacks.git.blame_line() end,                desc = "Git Blame Line" },
+    { "<leader>gg", function() Snacks.lazygit() end,                       desc = "Lazygit" },
+    { "<leader>un", function() Snacks.notifier.hide() end,                 desc = "Dismiss All Notifications" },
+    { "*",          function() Snacks.words.jump(vim.v.count1, true) end,  desc = "Next Reference",           mode = { "n", "t" } },
+    { "#",          function() Snacks.words.jump(-vim.v.count1, true) end, desc = "Prev Reference",           mode = { "n", "t" } },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
@@ -110,6 +118,7 @@ return {
           Snacks.debug.backtrace()
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
+
 
         Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>tl")
         Snacks.toggle.indent():map("<leader>ug")

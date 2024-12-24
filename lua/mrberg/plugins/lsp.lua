@@ -78,6 +78,8 @@ return {
           -- Rename the variable under your cursor.
           map('rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
+          map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
