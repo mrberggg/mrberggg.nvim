@@ -36,37 +36,11 @@ return {
     opts = {},
   },
   {
-    'tummetott/unimpaired.nvim',
+    'Goose97/timber.nvim',
+    version = '*',
     event = 'VeryLazy',
-    opts = {
-      keymaps = {
-        bnext = {
-          mapping = '<leader>l',
-          description = 'Go to [count] next buffer',
-          dot_repeat = true,
-        },
-        bprevious = {
-          mapping = '<leader>h',
-          description = 'Go to [count] previous buffer',
-          dot_repeat = true,
-        },
-        bfirst = {
-          mapping = '<leader>L',
-          description = 'Go to last buffer',
-        },
-        blast = {
-          mapping = '<leader>l',
-          description = 'Go to first buffer',
-        },
-      },
-    },
-  },
-  {
-    "Goose97/timber.nvim",
-    version = "*",
-    event = "VeryLazy",
     config = function()
-      require("timber").setup()
-    end
+      require('timber').setup()
+    end,
   },
 }

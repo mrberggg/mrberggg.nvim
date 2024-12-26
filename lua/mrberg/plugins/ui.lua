@@ -20,10 +20,10 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          command_palette = true,       -- position the cmdline and popupmenu together
+          command_palette = true, -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = true,        -- add a border to hover docs and signature help
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true, -- add a border to hover docs and signature help
         },
       }
     end,
@@ -84,9 +84,9 @@ return {
           lualine_c = {
             {
               'filename',
-              file_status = true,     -- Displays file status (readonly status, modified status)
+              file_status = true, -- Displays file status (readonly status, modified status)
               newfile_status = false, -- Display new file status (new file means no write after created)
-              path = 4,               -- 0: Just the filename
+              path = 4, -- 0: Just the filename
               -- 1: Relative path
               -- 2: Absolute path
               -- 3: Absolute path, with tilde as the home directory
@@ -95,10 +95,10 @@ return {
               -- shorting_target = 40, -- Shortens path to leave 40 spaces in the window
               -- for other components. (terrible name, any suggestions?)
               symbols = {
-                modified = '[+]',      -- Text to show when the file is modified.
-                readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
+                modified = '[+]', -- Text to show when the file is modified.
+                readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
                 unnamed = '[No Name]', -- Text to show for unnamed buffers.
-                newfile = '[New]',     -- Text to show for newly created file before first write
+                newfile = '[New]', -- Text to show for newly created file before first write
               },
             },
           },
@@ -148,7 +148,7 @@ return {
       menu = {},
     },
     config = function(...)
-      require 'astronvim.plugins.configs.lspkind' (...)
+      require 'astronvim.plugins.configs.lspkind'(...)
     end,
   },
   { 'dmmulroy/ts-error-translator.nvim' },
@@ -165,12 +165,12 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {},
     keys = {
-      { '<Leader>xx', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>',           desc = 'Trouble Toggle' },
-      { '<Leader>xp', '<Cmd>Trouble diagnostics toggle<CR>',                        desc = 'Trouble Toggle Project' },
-      { '<leader>xs', '<cmd>Trouble symbols toggle focus=false<cr>',                desc = 'Symbols (Trouble)' },
+      { '<Leader>xx', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Trouble Toggle' },
+      { '<Leader>xp', '<Cmd>Trouble diagnostics toggle<CR>', desc = 'Trouble Toggle Project' },
+      { '<leader>xs', '<cmd>Trouble symbols toggle focus=false<cr>', desc = 'Symbols (Trouble)' },
       { '<leader>xl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>', desc = 'LSP Definitions / references / ... (Trouble)' },
-      { '<leader>xl', '<cmd>Trouble loclist toggle<cr>',                            desc = 'Location List (Trouble)' },
-      { '<leader>xq', '<cmd>Trouble qflist toggle<cr>',                             desc = 'Quickfix List (Trouble)' },
+      { '<leader>xl', '<cmd>Trouble loclist toggle<cr>', desc = 'Location List (Trouble)' },
+      { '<leader>xq', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List (Trouble)' },
     },
   },
   {
@@ -180,17 +180,35 @@ return {
     config = function()
       require('incline').setup {
         render = 'basic',
-        hide = {
-          only_win = true,
-        },
       }
     end,
   },
   {
-    "sindrets/diffview.nvim",
-    keys = {
-      { '<Leader>gd', '<Cmd>DiffviewOpen<CR>',  desc = 'Diffview Open' },
-      { '<Leader>gc', '<Cmd>DiffviewClose<CR>', desc = 'Diffview Close' },
-    }
-  }
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    config = function()
+      local map = vim.api.nvim_set_keymap
+      local opts = { noremap = true, silent = true }
+
+      -- Move to previous/next
+      map('n', '<leader>h', '<Cmd>BufferPrevious<CR>', opts)
+      map('n', '<leader>l', '<Cmd>BufferNext<CR>', opts)
+
+      -- Close
+      map('n', '<leader>c', '<Cmd>BufferClose<CR>', opts)
+      map('n', '<leader>C', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
+      map('n', '<leader>cl', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
+      map('n', '<leader>cr', '<Cmd>BufferCloseBuffersRight<CR>', opts)
+
+      -- Pick
+      map('n', '<leader>b', '<Cmd>BufferPick<CR>', opts)
+      map('n', '<leader>B', '<Cmd>BufferPickDelete<CR>', opts)
+    end,
+  },
 }
