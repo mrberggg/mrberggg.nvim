@@ -212,17 +212,5 @@ return {
       map('n', '<leader>B', '<Cmd>BufferPickDelete<CR>', opts)
     end,
   },
-  {
-    'kevinhwang91/nvim-ufo',
-    requires = 'kevinhwang91/promise-async',
-    cond = not vim.g.vscode,
-    lazy = true,
-    config = function()
-      require('ufo').setup {
-        provider_selector = function(bufnr, filetype, buftype)
-          return { 'treesitter', 'indent' }
-        end,
-      }
-    end,
-  },
+  { 'tiagovla/scope.nvim', config = true }, -- isolate buffers to tabs
 }

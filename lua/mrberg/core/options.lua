@@ -78,14 +78,14 @@ vim.bo.softtabstop = 2
 vim.opt.hidden = true
 
 -- Folds
-vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldmethod = 'expr'
+vim.opt.foldcolumn = '1' -- '0' is not bad
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.viewoptions = 'folds,cursor'
-vim.o.sessionoptions = 'buffers,curdir,folds,globals,tabpages,winpos,winsize'
+vim.opt.sessionoptions = 'buffers,curdir,folds,globals,tabpages,winpos,winsize'
 
 vim.o.conceallevel = 1
 
