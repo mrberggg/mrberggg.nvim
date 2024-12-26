@@ -79,8 +79,13 @@ vim.opt.hidden = true
 
 -- Folds
 vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldmethod = 'expr'
+vim.opt.viewoptions = 'folds,cursor'
+vim.o.sessionoptions = 'buffers,curdir,folds,globals,tabpages,winpos,winsize'
 
 vim.o.conceallevel = 1
 

@@ -1,6 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    cond = not vim.g.vscode,
     event = 'VeryLazy',
     build = ':TSUpdate',
     dependencies = {
@@ -30,6 +31,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    cond = not vim.g.vscode,
     lazy = true,
     config = function()
       require('nvim-treesitter.configs').setup {
@@ -68,11 +70,11 @@ return {
             enable = true,
             swap_next = {
               ['<leader>na'] = '@assignment.outer', -- swap parameters/argument with next
-              ['<leader>nf'] = '@function.outer',   -- swap function with next
+              ['<leader>nf'] = '@function.outer', -- swap function with next
             },
             swap_previous = {
               ['<leader>pa'] = '@assignment.outter', -- swap parameters/argument with prev
-              ['<leader>pf'] = '@function.outer',    -- swap function with previous
+              ['<leader>pf'] = '@function.outer', -- swap function with previous
             },
           },
           move = {

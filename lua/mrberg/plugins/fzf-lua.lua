@@ -1,5 +1,6 @@
 return {
-  "ibhagwan/fzf-lua",
+  'ibhagwan/fzf-lua',
+  cond = not vim.g.vscode,
   opts = {
     oldfiles = {
       -- In Telescope, when I used <leader>fr, it would load old buffers.
@@ -26,15 +27,14 @@ return {
       -- With this change, I can sort of get the same behaviour in live_grep.
       -- ex: > enable --*/plugins/*
       -- I still find this a bit cumbersome. There's probably a better way of doing this.
-      rg_glob = true,            -- enable glob parsing
-      glob_flag = "--iglob",     -- case insensitive globs
-      glob_separator = "%s%-%-", -- query separator pattern (lua): ' --'
+      rg_glob = true, -- enable glob parsing
+      glob_flag = '--iglob', -- case insensitive globs
+      glob_separator = '%s%-%-', -- query separator pattern (lua): ' --'
     },
-
   },
   config = function()
-    local actions = require "fzf-lua.actions"
-    require('fzf-lua').setup({
+    local actions = require 'fzf-lua.actions'
+    require('fzf-lua').setup {
       actions = {
         -- Below are the default actions, setting any value in these tables will override
         -- the defaults, to inherit from the defaults change [1] from `false` to `true`
@@ -46,24 +46,24 @@ return {
           -- `file_edit_or_qf` opens a single selection or sends multiple selection to quickfix
           -- replace `enter` with `file_edit` to open all files/bufs whether single or multiple
           -- replace `enter` with `file_switch_or_edit` to attempt a switch in current tab first
-          ["enter"]  = actions.file_edit_or_qf,
-          ["ctrl-s"] = actions.file_split,
-          ["ctrl-v"] = actions.file_vsplit,
-          ["ctrl-t"] = actions.file_tabedit,
-          ["ctrl-q"] = actions.file_sel_to_qf,
-          ["alt-Q"]  = actions.file_sel_to_ll,
+          ['enter'] = actions.file_edit_or_qf,
+          ['ctrl-s'] = actions.file_split,
+          ['ctrl-v'] = actions.file_vsplit,
+          ['ctrl-t'] = actions.file_tabedit,
+          ['ctrl-q'] = actions.file_sel_to_qf,
+          ['alt-Q'] = actions.file_sel_to_ll,
         },
       },
-    })
+    }
   end,
   keys = {
     {
       '<leader>ff',
       function()
-        require('fzf-lua').files({
+        require('fzf-lua').files {
           cwd_only = true,
           previewer = true,
-        })
+        }
       end,
       mode = { 'n' },
       desc = '[F]ind [F]iles',
@@ -71,11 +71,11 @@ return {
     {
       '<leader>fo',
       function()
-        require('fzf-lua').files({
+        require('fzf-lua').files {
           cwd_only = true,
           previewer = true,
           stat_file = true,
-        })
+        }
       end,
       mode = { 'n' },
       desc = '[F]ind [O]ld files',
@@ -83,8 +83,9 @@ return {
     {
       '<leader>fg',
       function()
-        require('fzf-lua').git_files({ cmd = "git ls-files --modified" })
+        require('fzf-lua').git_files { cmd = 'git ls-files --modified' }
       end,
+      desc = '[F]ind [G]it',
     },
     {
       '<leader>fr',
@@ -111,30 +112,41 @@ return {
       desc = '[F]ind [C]olorschemes',
     },
     {
-      '<leader>ft',
+      '<leader>fw',
       function()
         require('fzf-lua').grep()
       end,
       mode = { 'n' },
-      desc = '[F]ind [T]ext',
+      desc = '[F]ind [W]ord',
+    },
+    {
+      '<leader>ft',
+      function()
+        require('fzf-lua').tabs()
+      end,
+      mode = { 'n' },
+      desc = '[F]ind [T]abs',
     },
     {
       'gD',
       function()
         require('fzf-lua').lsp_definitions()
       end,
+      desc = '[F]ind [D]efinitions',
     },
     {
       'gr',
       function()
         require('fzf-lua').lsp_references()
       end,
+      desc = '[F]ind [R]eferences',
     },
     {
-      "<leader>fk",
+      '<leader>fk',
       function()
         require('fzf-lua').keymaps()
       end,
+      desc = '[F]ind [K]eymaps',
     },
     {
       '<leader>fh',
@@ -158,8 +170,7 @@ return {
         require('fzf-lua').quickfix()
       end,
       mode = { 'n' },
-      desc = '[F]ind [S]ymbol',
+      desc = '[F]ind [Q]uickfix',
     },
-  }
-  ,
+  },
 }

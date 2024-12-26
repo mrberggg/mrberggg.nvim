@@ -1,5 +1,6 @@
 return {
   'folke/snacks.nvim',
+  cond = not vim.g.vscode,
   priority = 1000,
   lazy = false,
   opts = {
@@ -50,7 +51,7 @@ return {
       },
       sections = {
         { section = 'header', padding = 4 },
-        { section = 'keys',   gap = 1,    padding = 3 },
+        { section = 'keys', gap = 1, padding = 3 },
         { section = 'startup' },
       },
     },
@@ -162,7 +163,7 @@ return {
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>tl'
+        Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>t;'
         Snacks.toggle.indent():map '<leader>ug'
         Snacks.toggle.dim():map '<leader>ud'
         Snacks.input.enable()

@@ -151,7 +151,7 @@ return {
       require 'astronvim.plugins.configs.lspkind'(...)
     end,
   },
-  { 'dmmulroy/ts-error-translator.nvim' },
+  { 'dmmulroy/ts-error-translator.nvim', cond = not vim.g.vscode },
   {
     'petertriho/nvim-scrollbar',
     cond = not vim.g.vscode,
@@ -162,6 +162,7 @@ return {
   },
   {
     'folke/trouble.nvim',
+    cond = not vim.g.vscode,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {},
     keys = {
@@ -185,6 +186,7 @@ return {
   },
   {
     'romgrk/barbar.nvim',
+    cond = not vim.g.vscode,
     dependencies = {
       'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
@@ -206,9 +208,21 @@ return {
       map('n', '<leader>cl', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
       map('n', '<leader>cr', '<Cmd>BufferCloseBuffersRight<CR>', opts)
 
-      -- Pick
       map('n', '<leader>b', '<Cmd>BufferPick<CR>', opts)
       map('n', '<leader>B', '<Cmd>BufferPickDelete<CR>', opts)
+    end,
+  },
+  {
+    'kevinhwang91/nvim-ufo',
+    requires = 'kevinhwang91/promise-async',
+    cond = not vim.g.vscode,
+    lazy = true,
+    config = function()
+      require('ufo').setup {
+        provider_selector = function(bufnr, filetype, buftype)
+          return { 'treesitter', 'indent' }
+        end,
+      }
     end,
   },
 }
