@@ -1,6 +1,7 @@
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set('n', '<leader>q', '<CMD>qall<CR>', { desc = 'Show error virtual text' })
+vim.keymap.set('n', '<leader>qa', '<CMD>qall<CR>', { desc = 'Show error virtual text' })
+vim.keymap.set('n', '<leader>q', '<CMD>q<CR>', { desc = 'Show error virtual text' })
 
 -- Keybinds to make split navigation easier.
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })

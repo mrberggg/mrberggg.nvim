@@ -96,7 +96,7 @@ return {
       desc = '[F]ind [R]esume',
     },
     {
-      '<leader>fb',
+      '<leader><leader>',
       function()
         require('fzf-lua').buffers()
       end,
