@@ -50,8 +50,12 @@ return {
           ['ctrl-s'] = actions.file_split,
           ['ctrl-v'] = actions.file_vsplit,
           ['ctrl-t'] = actions.file_tabedit,
-          ['ctrl-q'] = actions.file_sel_to_qf,
           ['alt-Q'] = actions.file_sel_to_ll,
+        },
+      },
+      keymap = {
+        fzf = {
+          ['ctrl-q'] = 'select-all+accept',
         },
       },
     }
