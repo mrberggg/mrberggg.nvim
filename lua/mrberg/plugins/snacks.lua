@@ -59,6 +59,9 @@ return {
     input = { enabled = true },
     lazygit = { enabled = true },
     notify = { enabled = false },
+    picker = {
+      enabled = true,
+    },
     profiler = { enabled = false },
     scope = {
       enabled = true,
@@ -67,7 +70,7 @@ return {
       },
       keys = {
         jump = {
-          ['-'] = {
+          ['['] = {
             min_size = 1, -- allow single line scopes
             bottom = false,
             cursor = false,
@@ -75,7 +78,7 @@ return {
             treesitter = { blocks = { enabled = false } },
             desc = 'jump to top edge of scope',
           },
-          ['+'] = {
+          [']'] = {
             min_size = 1, -- allow single line scopes
             bottom = true,
             cursor = false,
@@ -120,7 +123,7 @@ return {
       desc = 'Lazygit',
     },
     {
-      '<leader>un',
+      '<leader>no',
       function()
         Snacks.notifier.hide()
       end,
@@ -141,6 +144,70 @@ return {
       end,
       desc = 'Prev Reference',
       mode = { 'n', 't' },
+    },
+    {
+      '<leader>,',
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = 'Buffers',
+    },
+    {
+      '<leader>/',
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = 'Grep',
+    },
+    {
+      '<leader>:',
+      function()
+        Snacks.picker.command_history()
+      end,
+      desc = 'Command History',
+    },
+    {
+      '<leader>ff',
+      function()
+        Snacks.picker.files()
+      end,
+      desc = 'Find Files',
+    },
+    {
+      '<leader>fk',
+      function()
+        Snacks.picker.keymaps()
+      end,
+    },
+    {
+      '<leader>fg',
+      function()
+        Snacks.picker.git_status()
+      end,
+    },
+    {
+      '<leader>fr',
+      function()
+        Snacks.picker.resume()
+      end,
+    },
+    {
+      '<leader>fh',
+      function()
+        Snacks.picker.man()
+      end,
+    },
+    {
+      '<leader>fo',
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+    },
+    {
+      '<leader>fq',
+      function()
+        Snacks.picker.qflist()
+      end,
     },
   },
   init = function()

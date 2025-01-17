@@ -166,12 +166,9 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {},
     keys = {
-      { '<Leader>xx', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Trouble Toggle' },
-      { '<Leader>xp', '<Cmd>Trouble diagnostics toggle<CR>', desc = 'Trouble Toggle Project' },
-      { '<leader>xs', '<cmd>Trouble symbols toggle focus=false<cr>', desc = 'Symbols (Trouble)' },
-      { '<leader>xl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>', desc = 'LSP Definitions / references / ... (Trouble)' },
-      { '<leader>xl', '<cmd>Trouble loclist toggle<cr>', desc = 'Location List (Trouble)' },
-      { '<leader>xq', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List (Trouble)' },
+      { '<Leader>x', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Trouble Toggle' },
+      { '<Leader>X', '<Cmd>Trouble diagnostics toggle<CR>', desc = 'Trouble Toggle Project' },
+      { '<leader>Q', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List (Trouble)' },
     },
   },
   {
@@ -208,7 +205,7 @@ return {
       map('n', '<leader>cl', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
       map('n', '<leader>cr', '<Cmd>BufferCloseBuffersRight<CR>', opts)
 
-      map('n', '<leader>b', '<Cmd>BufferPick<CR>', opts)
+      map('n', '<leader><leader>', '<Cmd>BufferPick<CR>', opts)
       map('n', '<leader>B', '<Cmd>BufferPickDelete<CR>', opts)
     end,
   },
