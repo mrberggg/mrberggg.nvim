@@ -46,24 +46,6 @@ return {
     end,
   },
   {
-    'akinsho/bufferline.nvim',
-    cond = not vim.g.vscode,
-    lazy = true,
-    event = 'BufEnter',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = true,
-    opts = {
-      options = {
-        separator_style = 'slant',
-        diagnostice = 'nvim_lsp',
-        diagnostics_indicator = function(count, level)
-          local icon = level:match 'error' and ' ' or ''
-          return ' ' .. icon .. count
-        end,
-      },
-    },
-  },
-  {
     'nvim-lualine/lualine.nvim',
     cond = not vim.g.vscode,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -210,4 +192,17 @@ return {
     end,
   },
   { 'tiagovla/scope.nvim', config = true }, -- isolate buffers to tabs
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async',
+    config = function()
+      require('ufo').setup {
+        provider_selector = function(bufnr, filetype, buftype)
+          return { 'treesitter', 'indent' }
+        end,
+      }
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+    end,
+  },
 }

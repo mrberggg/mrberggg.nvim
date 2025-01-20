@@ -123,13 +123,6 @@ return {
       desc = 'Lazygit',
     },
     {
-      '<leader>no',
-      function()
-        Snacks.notifier.hide()
-      end,
-      desc = 'Dismiss All Notifications',
-    },
-    {
       '*',
       function()
         Snacks.words.jump(vim.v.count1, true)
@@ -146,9 +139,17 @@ return {
       mode = { 'n', 't' },
     },
     {
-      '<leader>,',
+      '<leader><leader>',
       function()
-        Snacks.picker.buffers()
+        Snacks.picker.buffers {
+          win = {
+            input = {
+              keys = {
+                ['<c-l>'] = { 'bufdelete', mode = { 'n', 'i' } },
+              },
+            },
+          },
+        }
       end,
       desc = 'Buffers',
     },
@@ -174,13 +175,25 @@ return {
       desc = 'Find Files',
     },
     {
+      '<leader>d',
+      function()
+        Snacks.picker.diagnostics()
+      end,
+    },
+    {
+      '<leader>D',
+      function()
+        Snacks.picker.diagnostics_buffer()
+      end,
+    },
+    {
       '<leader>fk',
       function()
         Snacks.picker.keymaps()
       end,
     },
     {
-      '<leader>fg',
+      '<leader>gs',
       function()
         Snacks.picker.git_status()
       end,
@@ -207,6 +220,12 @@ return {
       '<leader>fq',
       function()
         Snacks.picker.qflist()
+      end,
+    },
+    {
+      'gr',
+      function()
+        Snacks.picker.lsp_references()
       end,
     },
   },
