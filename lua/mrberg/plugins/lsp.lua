@@ -8,7 +8,7 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-      { 'saghen/blink.cmp' },
+      'saghen/blink.cmp',
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
     },
@@ -122,7 +122,6 @@ return {
       local ensure_installed = vim.tbl_keys(opts.servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'prettier',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
     end,
