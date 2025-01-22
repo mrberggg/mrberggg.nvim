@@ -16,7 +16,7 @@ return {
     },
     config = function()
       require('mason-lspconfig').setup {
-        ensure_installed = { 'lua_ls', 'cssls', 'eslint', 'html', 'jsonls', 'markdown_oxide', 'pyright', 'volar' },
+        ensure_installed = { 'lua_ls', 'cssls', 'eslint', 'html', 'jsonls', 'markdown_oxide', 'pyright', 'volar', 'vtsls' },
         automatic_installation = true,
       }
     end,
