@@ -9,7 +9,6 @@ return {
       'nvim-lua/plenary.nvim',
       'hrsh7th/nvim-cmp',
       'nvim-treesitter',
-      'ibhagwan/fzf-lua',
     },
     config = function(_, opts)
       require('obsidian').setup(opts)
