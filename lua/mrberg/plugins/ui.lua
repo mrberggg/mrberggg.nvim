@@ -143,17 +143,6 @@ return {
     end,
   },
   {
-    'folke/trouble.nvim',
-    cond = not vim.g.vscode,
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {},
-    keys = {
-      { '<Leader>x', '<Cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Trouble Toggle' },
-      { '<Leader>X', '<Cmd>Trouble diagnostics toggle<CR>', desc = 'Trouble Toggle Project' },
-      { '<leader>Q', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List (Trouble)' },
-    },
-  },
-  {
     'b0o/incline.nvim',
     event = 'VeryLazy',
     cond = not vim.g.vscode,
@@ -165,33 +154,25 @@ return {
   },
   {
     'romgrk/barbar.nvim',
+    enabled = true,
     cond = not vim.g.vscode,
     dependencies = {
       'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
-    init = function()
-      vim.g.barbar_auto_setup = false
-    end,
     config = function()
       local map = vim.api.nvim_set_keymap
       local opts = { noremap = true, silent = true }
-
-      -- Move to previous/next
-      map('n', '<leader>h', '<Cmd>BufferPrevious<CR>', opts)
-      map('n', '<leader>l', '<Cmd>BufferNext<CR>', opts)
 
       -- Close
       map('n', '<leader>c', '<Cmd>BufferClose<CR>', opts)
       map('n', '<leader>C', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
       map('n', '<leader>cl', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
       map('n', '<leader>cr', '<Cmd>BufferCloseBuffersRight<CR>', opts)
-
-      map('n', '<leader><leader>', '<Cmd>BufferPick<CR>', opts)
+      map('n', '<leader>b', '<Cmd>BufferPick<CR>', opts)
       map('n', '<leader>B', '<Cmd>BufferPickDelete<CR>', opts)
     end,
   },
-  { 'tiagovla/scope.nvim', config = true }, -- isolate buffers to tabs
   {
     'kevinhwang91/nvim-ufo',
     dependencies = 'kevinhwang91/promise-async',

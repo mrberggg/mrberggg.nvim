@@ -8,7 +8,7 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'javascript', 'typescript', 'json', 'tsx', 'regex' },
+      -- ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'javascript', 'vtsls', 'json', 'tsx', 'regex' },
       auto_install = true,
       highlight = {
         enable = true,

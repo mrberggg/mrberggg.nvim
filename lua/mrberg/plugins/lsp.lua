@@ -143,6 +143,11 @@ return {
             functionLikeReturnTypes = { enabled = true },
             enumMemberValues = { enabled = true },
           },
+          tsserver = {
+            experimental = {
+              enableProjectDiagnostics = true,
+            },
+          },
         },
       },
     },
@@ -153,6 +158,7 @@ return {
       { '<leader>tr', '<Cmd>VtsExec remove_unused_imports<CR>', desc = '[T]ypeScript [R]emove unused imports' },
       { '<leader>ti', '<Cmd>VtsExec add_missing_imports<CR>', desc = '[T]ypeScript [A]dd missing imports' },
       { '<leader>tf', '<Cmd>VtsExec fix_all<CR>', desc = '[T]ypeScript fix [a]ll' },
+      { '<leader>re', '<Cmd>VtsExec restart_tsserver<CR>', desc = '[TypeScript] [R]estart' },
     },
   },
 }

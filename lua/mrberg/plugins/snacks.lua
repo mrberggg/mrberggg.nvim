@@ -97,8 +97,8 @@ return {
         easing = 'outQuint',
       },
     },
-    statuscolumn = { enabled = false },
-    words = { enabled = false },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     {
@@ -177,7 +177,9 @@ return {
     {
       '<leader>d',
       function()
-        Snacks.picker.diagnostics()
+        Snacks.picker.diagnostics {
+          severity = 'ERROR',
+        }
       end,
     },
     {
