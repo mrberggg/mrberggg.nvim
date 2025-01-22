@@ -8,15 +8,4 @@ return {
       vim.cmd.colorscheme 'catppuccin-frappe'
     end,
   },
-  {
-    'rachartier/tiny-devicons-auto-colors.nvim',
-    cond = not vim.g.vscode,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    event = 'VeryLazy',
-    config = function()
-      require('tiny-devicons-auto-colors').setup()
-    end,
-  },
 }

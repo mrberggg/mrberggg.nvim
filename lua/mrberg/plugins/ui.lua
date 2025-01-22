@@ -103,38 +103,6 @@ return {
     end,
   },
   {
-    'onsails/lspkind.nvim',
-    lazy = true,
-    cond = not vim.g.vscode,
-    enabled = vim.g.icons_enabled ~= false,
-    opts = {
-      mode = 'symbol',
-      symbol_map = {
-        Array = '󰅪',
-        Boolean = '⊨',
-        Class = '󰌗',
-        Constructor = '',
-        Key = '󰌆',
-        Namespace = '󰅪',
-        Null = 'NULL',
-        Number = '#',
-        Object = '󰀚',
-        Package = '󰏗',
-        Property = '',
-        Reference = '',
-        Snippet = '',
-        String = '󰀬',
-        TypeParameter = '󰊄',
-        Unit = '',
-      },
-      menu = {},
-    },
-    config = function(...)
-      require 'astronvim.plugins.configs.lspkind'(...)
-    end,
-  },
-  { 'dmmulroy/ts-error-translator.nvim', cond = not vim.g.vscode },
-  {
     'petertriho/nvim-scrollbar',
     cond = not vim.g.vscode,
     event = 'VeryLazy',
