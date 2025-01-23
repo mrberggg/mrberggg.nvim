@@ -10,7 +10,6 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       'saghen/blink.cmp',
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
     },
     opts = {
       servers = {

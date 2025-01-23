@@ -154,4 +154,22 @@ return {
       vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
     end,
   },
+  {
+    'rachartier/tiny-inline-diagnostic.nvim',
+    event = 'VeryLazy',
+    priority = 1000, -- needs to be loaded in first
+    config = function()
+      require('tiny-inline-diagnostic').setup()
+    end,
+  },
+  {
+    'rcarriga/nvim-notify',
+    cond = not vim.g.vscode,
+    config = function()
+      vim.notify = require 'notify'
+      require('notify').setup {
+        top_down = false,
+      }
+    end,
+  },
 }
