@@ -131,6 +131,8 @@ return {
     config = function()
       local map = vim.api.nvim_set_keymap
       local opts = { noremap = true, silent = true }
+      map('n', '<leader>h', '<Cmd>BufferPrevious<CR>', opts)
+      map('n', '<leader>l', '<Cmd>BufferNext<CR>', opts)
 
       -- Close
       map('n', '<leader>c', '<Cmd>BufferClose<CR>', opts)
