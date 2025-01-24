@@ -7,7 +7,7 @@ return {
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
       'saghen/blink.cmp',
       -- Useful status updates for LSP.
     },
@@ -29,28 +29,22 @@ return {
         jsonls = {},
         markdown_oxide = {},
         pyright = {},
+        volar = {},
+        vtsls = {},
       },
     },
     config = function(_, opts)
+      local ensure_installed = vim.tbl_keys(opts.servers or {})
+
+      require('mason').setup()
       require('mason-lspconfig').setup {
-        handlers = {
-          function(server_name)
-            local server = opts.servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
-            -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
+        ensure_installed = ensure_installed,
+        automatic_installation = true,
       }
 
       local lspconfig = require 'lspconfig'
 
       -- LSP servers and clients are able to communicate to each other what features they support.
-      --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
       for server, config in pairs(opts.servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
         config.capabilities.textDocument.foldingRange = {
@@ -62,9 +56,6 @@ return {
       end
 
       --  This function gets run when an LSP attaches to a particular buffer.
-      --    That is to say, every time a new file is opened that is associated with
-      --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
-      --    function will be executed to configure the current buffer
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
@@ -74,19 +65,9 @@ return {
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          -- Rename the variable under your cursor.
           map('rn', vim.lsp.buf.rename, '[R]e[n]ame')
-
           map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-
-          -- Execute a code action, usually your cursor needs to be on top of an error
-          -- or a suggestion from your LSP for this to activate.
-          -- map('<leader>.', vim.lsp.buf.code_action, '[C]ode [A]ction')
           map('<leader>.', ':lua vim.lsp.buf.code_action()<CR>', '[C]ode [A]ction')
-          -- nnoremap <buffer> <M-CR> :lua vim.lsp.buf.code_action()<CR>
-
-          -- Opens a popup that displays documentation about the word under your cursor
-          --  See `:help K` for why this keymap.
           map('K', function()
             local winid = require('ufo').peekFoldedLinesUnderCursor()
             if not winid then
@@ -94,11 +75,7 @@ return {
             end
           end, 'Hover info')
 
-          -- The following two autocommands are used to highlight references of the
-          -- word under your cursor when your cursor rests there for a little while.
-          --    See `:help CursorHold` for information about when this is executed
-          --
-          -- When you move your cursor, the highlights will be cleared (the second autocommand).
+          -- Highlight references of the word under your cursor when your cursor rests there for a little while.
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -113,16 +90,6 @@ return {
           end
         end,
       })
-
-      require('mason').setup()
-
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(opts.servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
     end,
   },
   {
