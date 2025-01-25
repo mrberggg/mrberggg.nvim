@@ -6,3 +6,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Automatically format the buffer before saving
+vim.api.nvim_create_autocmd('BufWritePre', {
+  callback = function() vim.lsp.buf.format() end,
+})

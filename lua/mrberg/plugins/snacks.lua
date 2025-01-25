@@ -8,7 +8,6 @@ return {
     dim = { enabled = true },
     dashboard = {
       enabled = true,
-      -- enabled = false,
       preset = {
         keys = {
           {
@@ -229,6 +228,20 @@ return {
       function()
         Snacks.picker.lsp_references()
       end,
+    },
+    {
+      '<leader>s',
+      function()
+        Snacks.scratch()
+      end,
+      desc = 'Toggle Scratch Buffer',
+    },
+    {
+      '<leader>S',
+      function()
+        Snacks.scratch.select()
+      end,
+      desc = 'Select Scratch Buffer',
     },
   },
   init = function()

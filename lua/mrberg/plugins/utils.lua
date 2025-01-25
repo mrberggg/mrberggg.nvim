@@ -12,21 +12,24 @@ return {
   {
     'gregorias/coerce.nvim',
     tag = 'v4.1.0',
-    lazy = true,
-    event = 'BufEnter',
+    event = 'BufReadPre',
     config = true,
   },
   {
-    'smoka7/hop.nvim',
-    lazy = true,
-    event = { 'BufEnter', 'BufNewFile' },
-    version = '*',
-    opts = {
-      keys = 'etovxqpdygfblzhckisuran',
-    },
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
     config = true,
+    opts = {},
     keys = {
-      { "<Leader>'", '<Cmd>HopWord<CR>', desc = 'Hop word', mode = 'n' },
+      {
+        "'",
+        mode = { 'n', 'x', 'o' },
+        function()
+          require('flash').jump()
+        end,
+        desc = 'Flash',
+      },
     },
   },
   {
