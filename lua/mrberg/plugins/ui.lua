@@ -6,7 +6,6 @@ return {
     event = 'VeryLazy',
     dependencies = {
       'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
     },
     config = function()
       require('noice').setup {
@@ -20,10 +19,10 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          command_palette = true, -- position the cmdline and popupmenu together
+          command_palette = true,       -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = true, -- add a border to hover docs and signature help
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true,        -- add a border to hover docs and signature help
         },
       }
     end,
@@ -66,9 +65,9 @@ return {
           lualine_c = {
             {
               'filename',
-              file_status = true, -- Displays file status (readonly status, modified status)
+              file_status = true,     -- Displays file status (readonly status, modified status)
               newfile_status = false, -- Display new file status (new file means no write after created)
-              path = 4, -- 0: Just the filename
+              path = 4,               -- 0: Just the filename
               -- 1: Relative path
               -- 2: Absolute path
               -- 3: Absolute path, with tilde as the home directory
@@ -77,10 +76,10 @@ return {
               -- shorting_target = 40, -- Shortens path to leave 40 spaces in the window
               -- for other components. (terrible name, any suggestions?)
               symbols = {
-                modified = '[+]', -- Text to show when the file is modified.
-                readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
+                modified = '[+]',      -- Text to show when the file is modified.
+                readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
                 unnamed = '[No Name]', -- Text to show for unnamed buffers.
-                newfile = '[New]', -- Text to show for newly created file before first write
+                newfile = '[New]',     -- Text to show for newly created file before first write
               },
             },
           },
@@ -111,21 +110,15 @@ return {
     end,
   },
   {
-    'b0o/incline.nvim',
-    event = 'VeryLazy',
+    'romgrk/barbar.nvim',
     cond = not vim.g.vscode,
     config = function()
-      require('incline').setup {
-        render = 'basic',
+      require('barbar').setup {
+        auto_hide = 1
       }
     end,
-  },
-  {
-    'romgrk/barbar.nvim',
-    enabled = true,
-    cond = not vim.g.vscode,
     dependencies = {
-      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
     config = function()
@@ -162,16 +155,6 @@ return {
     priority = 1000, -- needs to be loaded in first
     config = function()
       require('tiny-inline-diagnostic').setup()
-    end,
-  },
-  {
-    'rcarriga/nvim-notify',
-    cond = not vim.g.vscode,
-    config = function()
-      vim.notify = require 'notify'
-      require('notify').setup {
-        top_down = false,
-      }
     end,
   },
 }
