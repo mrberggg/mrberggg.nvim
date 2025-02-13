@@ -1,32 +1,21 @@
 return {
   {
-    'f-person/git-blame.nvim',
-    cond = not vim.g.vscode,
-    lazy = true,
-    event = 'BufEnter',
-    opts = {
-      enabled = false,
-    },
-    keys = {
-      { '<leader>gb', '<cmd>GitBlameToggle<CR>', desc = 'Toggle git blame' },
-    },
-  },
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    cond = not vim.g.vscode,
-    lazy = true,
-    event = 'BufEnter',
+    'tanvirtin/vgit.nvim',
+    branch = 'v1.0.x',
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' },
+    -- Lazy loading on 'VimEnter' event is necessary.
+    event = 'VimEnter',
     config = function()
-      require('gitsigns').setup()
+      require("vgit").setup()
     end,
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
-  },
+    keys = {
+      { 'gj',          '<CMD>VGit hunk_down<CR>',                       desc = 'Previous hunk' },
+      { 'gk',          '<CMD>VGit hunk_up<CR>',                         desc = 'Next hunk' },
+      { '<leader>gdd', '<CMD>VGit buffer_hunk_preview<CR>',             desc = 'Git diff hunk' },
+      { '<leader>gdp', '<CMD>VGit project_diff_preview<CR>',            desc = 'Git diff hunk' },
+      { '<leader>gcb', '<CMD>VGit buffer_conflict_accept_both<CR>',     desc = 'Git conflict accept both' },
+      { '<leader>gcc', '<CMD>VGit buffer_conflict_accept_current<CR>',  desc = 'Git conflict accept current' },
+      { '<leader>gci', '<CMD>VGit buffer_conflict_accept_incoming<CR>', desc = 'Git conflict accept incoming' },
+    }
+  }
 }
