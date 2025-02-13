@@ -5,7 +5,8 @@ return {
   lazy = false,
   opts = {
     bigfile = { enabled = true, notify = true },
-    dim = { enabled = true },
+    quickfile = { enabled = true, notify = true },
+    dim = { enabled = false },
     dashboard = {
       enabled = true,
       preset = {
@@ -17,22 +18,16 @@ return {
             action = ":lua require('persistence').load()",
           },
           {
-            icon = ' ',
-            key = 'f',
-            desc = 'Find File',
-            action = ":lua Snacks.dashboard.pick('files')",
-          },
-          {
-            icon = ' ',
-            key = 'r',
-            desc = 'Recent Files',
-            action = ":lua Snacks.dashboard.pick('oldfiles')",
-          },
-          {
             icon = '󰒲 ',
             key = 'u',
             desc = 'Update Plugins',
             action = ':Lazy update',
+          },
+          {
+            icon = '󰣪 ',
+            key = 'm',
+            desc = 'Mason',
+            action = ':Mason',
           },
           {
             icon = ' ',
@@ -50,17 +45,15 @@ return {
       },
       sections = {
         { section = 'header', padding = 4 },
-        { section = 'keys', gap = 1, padding = 3 },
+        { section = 'keys',   gap = 1,    padding = 3 },
         { section = 'startup' },
       },
     },
     indent = { enabled = false },
-    input = { enabled = true },
     lazygit = { enabled = true },
-    notify = { enabled = false },
-    picker = {
-      enabled = true,
-    },
+    notifier = { enabled = true },
+    explorer = { enabled = true },
+    picker = { enabled = true },
     profiler = { enabled = false },
     scope = {
       enabled = true,
@@ -167,9 +160,16 @@ return {
       desc = 'Command History',
     },
     {
-      '<leader>ff',
+      '<leader>F',
       function()
         Snacks.picker.files()
+      end,
+      desc = 'Find Files',
+    },
+    {
+      '<leader>ff',
+      function()
+        Snacks.picker.smart()
       end,
       desc = 'Find Files',
     },
@@ -243,6 +243,13 @@ return {
       end,
       desc = 'Select Scratch Buffer',
     },
+    {
+      '<leader>E',
+      function()
+        Snacks.explorer.open()
+      end,
+      desc = 'Select Scratch Buffer',
+    }
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {
@@ -258,9 +265,6 @@ return {
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
         Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>t;'
-        Snacks.toggle.indent():map '<leader>ug'
-        Snacks.toggle.dim():map '<leader>ud'
-        Snacks.input.enable()
       end,
     })
   end,
