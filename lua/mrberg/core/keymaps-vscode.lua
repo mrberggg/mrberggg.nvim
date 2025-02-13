@@ -1,4 +1,4 @@
-local scode = require 'jscode'
+local vscode = require 'vscode'
 
 -- Save
 vim.keymap.set('n', '<leader>w', function()
@@ -6,11 +6,11 @@ vim.keymap.set('n', '<leader>w', function()
 end, { desc = 'Save file' })
 -- Open error
 vim.keymap.set('n', '<leader>xx', function()
-  jscode.call 'workbench.action.showErrorsWarnings'
+  vscode.call 'workbench.action.showErrorsWarnings'
 end, { desc = 'Show errors warnings' })
 
 vim.keymap.set('n', '<leader>ff', function()
-  scode.call 'workbench.action.quickOpen'
+  vscode.call 'workbench.action.quickOpen'
 end, { desc = 'Find file' })
 
 vim.keymap.set('n', '<leader>rn', function()
