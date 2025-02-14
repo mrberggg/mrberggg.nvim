@@ -11,6 +11,7 @@ return {
     },
     opts = {
       servers = {
+        vtsls = {},
         eslint = {},
         lua_ls = {
           settings = {
@@ -28,7 +29,6 @@ return {
         markdown_oxide = {},
         pyright = {},
         volar = {},
-        vtsls = {},
       },
     },
     config = function(_, opts)
@@ -115,13 +115,14 @@ return {
       },
     },
     config = function()
-      require('lspconfig.configs').vtsls = require('vtsls').lspconfig -- set default server config, optional but recommended
+      require('lspconfig.configs').vtsls = require('vtsls')
+          .lspconfig -- set default server config, optional but recommended
     end,
     keys = {
       { '<leader>tr', '<Cmd>VtsExec remove_unused_imports<CR>', desc = '[T]ypeScript [R]emove unused imports' },
-      { '<leader>ti', '<Cmd>VtsExec add_missing_imports<CR>', desc = '[T]ypeScript [A]dd missing imports' },
-      { '<leader>tf', '<Cmd>VtsExec fix_all<CR>', desc = '[T]ypeScript fix [a]ll' },
-      { '<leader>re', '<Cmd>VtsExec restart_tsserver<CR>', desc = '[TypeScript] [R]estart' },
+      { '<leader>ti', '<Cmd>VtsExec add_missing_imports<CR>',   desc = '[T]ypeScript [A]dd missing imports' },
+      { '<leader>tf', '<Cmd>VtsExec fix_all<CR>',               desc = '[T]ypeScript fix [a]ll' },
+      { '<leader>re', '<Cmd>VtsExec restart_tsserver<CR>',      desc = '[TypeScript] [R]estart' },
     },
   },
 }
