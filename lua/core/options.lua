@@ -13,8 +13,9 @@ vim.opt.relativenumber = true
 -- Enable mouse mode
 vim.opt.mouse = 'a'
 
--- Don't show the mode, since it's already in the status line
+-- Remove status bar
 vim.opt.showmode = false
+vim.opt.laststatus = 0
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -27,7 +28,7 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+-- Case-insensitive searching UNLESS one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
@@ -67,31 +68,19 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Tabs
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
 vim.opt.expandtab = true
-vim.bo.softtabstop = 2
+vim.opt.softtabstop = 2
 
 -- Allows you to change buffers even if the current on has unsaved changes
 vim.opt.hidden = true
 
 -- Folds
-vim.opt.foldcolumn = '1' -- '0' is not bad
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
+vim.opt.foldcolumn = '0'             -- '0' is not bad
+vim.opt.foldlevel = 99               -- Needs to be big for nvim-ufo
+vim.opt.foldlevelstart = 99          -- start with no folds closed
 vim.opt.foldenable = true
-vim.opt.foldmethod = 'expr'
-vim.opt.viewoptions = 'folds,cursor'
-vim.opt.sessionoptions = 'buffers,curdir,folds,globals,tabpages,winpos,winsize'
-
-vim.o.conceallevel = 1
-
--- Prevent LSP from overwriting treesitter color settings
--- https://github.com/NvChad/NvChad/issues/1907
-vim.highlight.priorities.semantic_tokens = 95 -- Or any number lower than 100, treesitter's priority level
-
-vim.o.guifont = 'MonaspiceAr Nerd Font:h14'
+vim.opt.viewoptions = 'folds,cursor' -- Store in session
+vim.opt.sessionoptions = 'blank,buffers,folds,globals,help,resize,tabpages,terminal,winpos,winsize'
 
 -- Diagnostics
 vim.diagnostic.config { virtual_text = false }
-
-vim.o.laststatus = 0
