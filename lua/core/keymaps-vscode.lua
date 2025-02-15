@@ -5,7 +5,7 @@ vim.keymap.set('n', '<leader>w', function()
   vscode.call 'workbench.action.files.save'
 end, { desc = 'Save file' })
 -- Open error
-vim.keymap.set('n', '<leader>xx', function()
+vim.keymap.set('n', '<leader>fd', function()
   vscode.call 'workbench.action.showErrorsWarnings'
 end, { desc = 'Show errors warnings' })
 
@@ -17,4 +17,4 @@ vim.keymap.set('n', '<leader>rn', function()
   vscode.call 'editor.action.rename'
 end, { desc = 'Find in files' })
 
-vim.keymap.set('n', '<leader>t;', '<Cmd>set invrelativenumber<CR>', { desc = 'Toggle relative numbers' })
+vim.keymap.set('n', '<leader>;', '<Cmd>set invrelativenumber<CR>', { desc = 'Toggle relative numbers' })

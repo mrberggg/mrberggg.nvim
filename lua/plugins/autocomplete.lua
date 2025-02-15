@@ -3,7 +3,11 @@ return {
     'windwp/nvim-autopairs',
     cond = not vim.g.vscode,
     event = 'InsertEnter',
-    config = true,
+    config = function()
+      require('nvim-autopairs').setup {
+        disable_filetype = { 'snacks_picker_list' },
+      }
+    end,
   },
   {
     'windwp/nvim-ts-autotag',

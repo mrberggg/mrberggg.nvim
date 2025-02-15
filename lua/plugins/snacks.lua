@@ -94,14 +94,7 @@ return {
   },
   keys = {
     {
-      '<leader>z',
-      function()
-        Snacks.zen()
-      end,
-      desc = 'Toggle Zen Mode',
-    },
-    {
-      '<leader>rn',
+      'Rn',
       function()
         Snacks.rename.rename_file()
       end,
@@ -160,13 +153,6 @@ return {
       desc = 'Command History',
     },
     {
-      '<leader>F',
-      function()
-        Snacks.picker.files()
-      end,
-      desc = 'Find Files',
-    },
-    {
       '<leader>ff',
       function()
         Snacks.picker.smart()
@@ -174,17 +160,11 @@ return {
       desc = 'Find Files',
     },
     {
-      '<leader>d',
+      '<leader>fd',
       function()
-        Snacks.picker.diagnostics {
+        Snacks.picker.diagnostics_buffer({
           severity = 'ERROR',
-        }
-      end,
-    },
-    {
-      '<leader>D',
-      function()
-        Snacks.picker.diagnostics_buffer()
+        })
       end,
     },
     {
@@ -200,21 +180,15 @@ return {
       end,
     },
     {
-      '<leader>fr',
+      '<leader>f-',
       function()
         Snacks.picker.resume()
       end,
     },
     {
-      '<leader>fh',
-      function()
-        Snacks.picker.man()
-      end,
-    },
-    {
       '<leader>fo',
       function()
-        Snacks.picker.lsp_symbols()
+        Snacks.picker.treesitter()
       end,
     },
     {
@@ -230,25 +204,10 @@ return {
       end,
     },
     {
-      '<leader>s',
-      function()
-        Snacks.scratch()
-      end,
-      desc = 'Toggle Scratch Buffer',
-    },
-    {
-      '<leader>S',
-      function()
-        Snacks.scratch.select()
-      end,
-      desc = 'Select Scratch Buffer',
-    },
-    {
       '<leader>E',
       function()
         Snacks.explorer.open()
       end,
-      desc = 'Select Scratch Buffer',
     }
   },
   init = function()
@@ -264,7 +223,7 @@ return {
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>t;'
+        Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>;'
       end,
     })
   end,

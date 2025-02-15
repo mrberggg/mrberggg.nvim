@@ -7,9 +7,9 @@ return { -- Useful plugin to show you pending keybinds.
 
     wk.add {
       { '<leader>f', group = '[F]ind' },
-      { '<leader>l', group = '[L]sp' },
-      { '<leader>x', group = '[X]ebug' },
+      { '<leader>s', group = 'L[s]p' },
       { '<leader>g', group = '[G]it' },
+      { '<leader>t', group = '[T]est' },
     }
   end,
 }

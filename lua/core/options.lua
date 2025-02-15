@@ -60,9 +60,6 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
-
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -96,3 +93,5 @@ vim.o.guifont = 'MonaspiceAr Nerd Font:h14'
 
 -- Diagnostics
 vim.diagnostic.config { virtual_text = false }
+
+vim.o.laststatus = 0

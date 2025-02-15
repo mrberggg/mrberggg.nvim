@@ -23,7 +23,7 @@ return {
     opts = {},
     keys = {
       {
-        "<leader>'",
+        ';',
         mode = { 'n', 'x', 'o' },
         function()
           require('flash').jump()
@@ -37,13 +37,5 @@ return {
     lazy = true,
     event = 'VeryLazy',
     opts = {},
-  },
-  {
-    'Goose97/timber.nvim',
-    version = '*',
-    event = 'VeryLazy',
-    config = function()
-      require('timber').setup()
-    end,
   },
 }
