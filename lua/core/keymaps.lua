@@ -15,3 +15,5 @@ vim.keymap.set('n', '<leader>p', '<C-^>', { desc = 'Reopen previous buffer' })
 vim.keymap.set({ 'n', 'v' }, '<leader>o', 'gcc', { desc = 'Comment', remap = true })
 
 vim.keymap.set('n', '|', '<C-w>v', { desc = 'Split window' })
+
+vim.keymap.set('n', '<leader>i', '<Cmd>echo fnamemodify(expand("%"), ":~:.")<CR>', { desc = 'Present directory' })
