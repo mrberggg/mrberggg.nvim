@@ -174,7 +174,7 @@ return {
       end,
     },
     {
-      '<leader>gs',
+      '<leader>fg',
       function()
         Snacks.picker.git_status()
       end,
@@ -208,7 +208,14 @@ return {
       function()
         Snacks.explorer.open()
       end,
-    }
+    },
+    {
+      '<leader>gb',
+      function()
+        Snacks.picker.git_branches()
+      end,
+    },
+
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {

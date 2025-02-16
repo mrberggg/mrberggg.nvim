@@ -1,23 +1,74 @@
 return {
   {
-    'tanvirtin/vgit.nvim',
-    branch = 'v1.0.x',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' },
-    -- Lazy loading on 'VimEnter' event is necessary.
-    event = 'VimEnter',
+    'lewis6991/gitsigns.nvim',
+    cond = not vim.g.vscode,
     config = function()
-      require("vgit").setup()
+      require('gitsigns').setup {
+        on_attach = function(bufnr)
+          local gitsigns = require('gitsigns')
+
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+          end
+
+          -- Navigation
+          map('n', ']g', function()
+            if vim.wo.diff then
+              vim.cmd.normal({ ']g', bang = true })
+            else
+              gitsigns.nav_hunk('next')
+            end
+          end)
+
+          map('n', '[g', function()
+            if vim.wo.diff then
+              vim.cmd.normal({ '[g', bang = true })
+            else
+              gitsigns.nav_hunk('prev')
+            end
+          end)
+
+          -- Actions
+          map('n', '<leader>gs', gitsigns.stage_hunk)
+          map('n', '<leader>gr', gitsigns.reset_hunk)
+
+          map('v', '<leader>gs', function()
+            gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+          end)
+
+          map('v', '<leader>gr', function()
+            gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+          end)
+
+          map('n', '<leader>gS', gitsigns.stage_buffer)
+          map('n', '<leader>gR', gitsigns.reset_buffer)
+          map('n', '<leader>gp', gitsigns.preview_hunk)
+          map('n', '<leader>gi', gitsigns.preview_hunk_inline)
+
+          map('n', '<leader>gb', function()
+            gitsigns.blame_line({ full = true })
+          end)
+
+          map('n', '<leader>gd', gitsigns.diffthis)
+
+          map('n', '<leader>gD', function()
+            gitsigns.diffthis('~')
+          end)
+
+          map('n', '<leader>gQ', function() gitsigns.setqflist('all') end)
+          map('n', '<leader>gq', gitsigns.setqflist)
+
+          -- Toggles
+          map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+          map('n', '<leader>td', gitsigns.toggle_deleted)
+          map('n', '<leader>tw', gitsigns.toggle_word_diff)
+
+          -- Text object
+          map({ 'o', 'x' }, 'ih', gitsigns.select_hunk)
+        end
+      }
     end,
-    keys = {
-      { ']g',          '<CMD>VGit hunk_down<CR>',                       desc = 'Previous hunk' },
-      { '[g',          '<CMD>VGit hunk_up<CR>',                         desc = 'Next hunk' },
-      { '<leader>gp',  '<CMD>VGit buffer_hunk_preview<CR>',             desc = 'Git diff hunk' },
-      { '<leader>gS',  '<CMD>VGit buffer_hunk_stage<CR>',               desc = 'Git stage hunk' },
-      { '<leader>g!',  '<CMD>VGit buffer_hunk_reset<CR>',               desc = 'Git discard hunk' },
-      { '<leader>gcb', '<CMD>VGit buffer_conflict_accept_both<CR>',     desc = 'Git conflict accept both' },
-      { '<leader>gcc', '<CMD>VGit buffer_conflict_accept_current<CR>',  desc = 'Git conflict accept current' },
-      { '<leader>gci', '<CMD>VGit buffer_conflict_accept_incoming<CR>', desc = 'Git conflict accept incoming' },
-      { '<leader>gd',  '<CMD>VGit project_diff_preview<CR>',            desc = 'Git conflict accept incoming' },
-    }
   }
 }
