@@ -10,6 +10,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>s', group = 'L[s]p' },
       { '<leader>g', group = '[G]it' },
       { '<leader>t', group = '[T]est' },
+      { '<leader>d', group = '[D]ebug' },
     }
   end,
 }

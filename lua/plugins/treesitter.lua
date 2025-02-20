@@ -20,7 +20,7 @@ return {
           init_selection = '-',
           node_incremental = '-',
           scope_incremental = false,
-          node_decremental = '+',
+          node_decremental = '_',
         },
       },
     },
