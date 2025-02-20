@@ -4,6 +4,7 @@ return {
     cond = not vim.g.vscode,
     config = function()
       require('gitsigns').setup {
+        current_line_blame = true,
         on_attach = function(bufnr)
           local gitsigns = require('gitsigns')
 
@@ -14,59 +15,44 @@ return {
           end
 
           -- Navigation
-          map('n', ']g', function()
+          map('n', ']]', function()
             if vim.wo.diff then
-              vim.cmd.normal({ ']g', bang = true })
+              vim.cmd.normal({ ']]', bang = true })
             else
               gitsigns.nav_hunk('next')
             end
           end)
 
-          map('n', '[g', function()
+          map('n', '[[', function()
             if vim.wo.diff then
-              vim.cmd.normal({ '[g', bang = true })
+              vim.cmd.normal({ '[[', bang = true })
             else
               gitsigns.nav_hunk('prev')
             end
           end)
 
-          -- Actions
+          -- Diffs
+          map('n', '<leader>gd', gitsigns.diffthis)
+          map('n', '<leader>gw', gitsigns.toggle_word_diff)
+          map('n', '<leader>g-', gitsigns.toggle_deleted)
+          map('n', '<leader>gp', gitsigns.preview_hunk)
+
+          -- Manage hunks
           map('n', '<leader>gs', gitsigns.stage_hunk)
           map('n', '<leader>gr', gitsigns.reset_hunk)
-
-          map('v', '<leader>gs', function()
-            gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-          end)
-
-          map('v', '<leader>gr', function()
-            gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-          end)
-
           map('n', '<leader>gS', gitsigns.stage_buffer)
           map('n', '<leader>gR', gitsigns.reset_buffer)
-          map('n', '<leader>gp', gitsigns.preview_hunk)
-          map('n', '<leader>gi', gitsigns.preview_hunk_inline)
 
+          -- Add changed files to quick fix list
+          map('n', '<leader>gq', function() gitsigns.setqflist('all') end)
+
+          -- Git blame
           map('n', '<leader>gb', function()
             gitsigns.blame_line({ full = true })
           end)
-
-          map('n', '<leader>gd', gitsigns.diffthis)
-
-          map('n', '<leader>gD', function()
-            gitsigns.diffthis('~')
+          map('n', '<leader>gB', function()
+            gitsigns.blame()
           end)
-
-          map('n', '<leader>gQ', function() gitsigns.setqflist('all') end)
-          map('n', '<leader>gq', gitsigns.setqflist)
-
-          -- Toggles
-          map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-          map('n', '<leader>td', gitsigns.toggle_deleted)
-          map('n', '<leader>tw', gitsigns.toggle_word_diff)
-
-          -- Text object
-          map({ 'o', 'x' }, 'ih', gitsigns.select_hunk)
         end
       }
     end,
