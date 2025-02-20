@@ -180,7 +180,7 @@ return {
       end,
     },
     {
-      '<leader>f-',
+      '<leader>fr',
       function()
         Snacks.picker.resume()
       end,
