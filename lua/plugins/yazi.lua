@@ -4,6 +4,7 @@ return {
     cond = not vim.g.vscode,
     dependencies = {
       'nvim-lua/plenary.nvim',
+      "folke/snacks.nvim",
     },
     event = 'VeryLazy',
     config = function()
