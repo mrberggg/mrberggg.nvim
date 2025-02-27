@@ -7,26 +7,19 @@ return {
       'InsertEnter',
     },
   },
-  -- {
-  --   "olimorris/codecompanion.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-treesitter/nvim-treesitter",
-  --   },
-  --   config = function()
-  --     require('codecompanion').setup({
-  --       opts = {
-  --         log_level = "DEBUG"
-  --       },
-  --       strategies = {
-  --         chat = {
-  --           adapter = 'copilot',
-  --         },
-  --         inline = {
-  --           adapter = 'copilot',
-  --         },
-  --       },
-  --     })
-  --   end
-  -- }
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    cond = not vim.g.vscode,
+    dependencies = {
+      { 'github/copilot.vim' },                       -- or zbirenbaum/copilot.lua
+      { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+    },
+    build = 'make tiktoken',                          -- Only on MacOS or Linux
+    opts = {},
+    keys = {
+      { '<leader>aa', '<CMD>CopilotChatToggle<CR>',  desc = 'Toggle AI Chat', },
+      { '<leader>ap', '<CMD>CopilotChatPrompts<CR>', desc = 'Choose AI Prompts', },
+      { '<leader>am', '<CMD>CopilotChatModels<CR>',  desc = 'Choose AI models', },
+    },
+  },
 }
