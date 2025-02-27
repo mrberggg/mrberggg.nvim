@@ -119,9 +119,9 @@ return {
           .lspconfig -- set default server config, optional but recommended
     end,
     keys = {
-      { '<leader>sr', '<Cmd>VtsExec remove_unused_imports<CR>', desc = 'TypeScript [L]sp [R]emove unused imports' },
-      { '<leader>si', '<Cmd>VtsExec add_missing_imports<CR>',   desc = 'TypeScript [L]sp [A]dd missing imports' },
-      { '<leader>re', '<Cmd>VtsExec restart_tsserver<CR>',      desc = '[TypeScript] [R]estart' },
+      { '<leader>sr', '<Cmd>VtsExec remove_unused_imports<CR>', desc = 'TypeScript remove unused imports' },
+      { '<leader>si', '<Cmd>VtsExec add_missing_imports<CR>',   desc = 'TypeScript add missing imports' },
+      { '<leader>se', '<Cmd>VtsExec restart_tsserver<CR>',      desc = 'Restart typescript server' },
     },
   },
 }

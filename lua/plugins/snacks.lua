@@ -157,7 +157,7 @@ return {
       function()
         Snacks.picker.smart()
       end,
-      desc = 'Find Files',
+      desc = 'Find files',
     },
     {
       '<leader>fd',
@@ -166,36 +166,42 @@ return {
           severity = 'ERROR',
         })
       end,
+      desc = 'Show diagnostics'
     },
     {
       '<leader>fk',
       function()
         Snacks.picker.keymaps()
       end,
+      desc = 'Show keymaps'
     },
     {
       '<leader>fg',
       function()
         Snacks.picker.git_status()
       end,
+      desc = 'Show modified files'
     },
     {
       '<leader>fr',
       function()
         Snacks.picker.resume()
       end,
+      desc = 'Resume last search'
     },
     {
       '<leader>fo',
       function()
         Snacks.picker.treesitter()
       end,
+      desc = 'Find symbols'
     },
     {
       '<leader>fq',
       function()
         Snacks.picker.qflist()
       end,
+      desc = 'Quickfix list'
     },
     {
       'gr',
