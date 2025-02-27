@@ -1,8 +1,11 @@
 return {
   {
-    'tpope/vim-surround',
+    'kylechui/nvim-surround',
     lazy = true,
     event = 'BufEnter',
+    config = function()
+      require('nvim-surround').setup()
+    end
   },
   {
     'sQVe/sort.nvim',
