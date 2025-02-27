@@ -26,6 +26,7 @@ return {
     cond = not vim.g.vscode,
     version = '*',
     opts = {
+      cmdline = { completion = { ghost_text = { enabled = false } } },
       completion = {
         list = {
           selection = {
