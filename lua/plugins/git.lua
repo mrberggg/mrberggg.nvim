@@ -32,7 +32,7 @@ return {
         desc = 'Git next hunk'
       },
       -- Diffs
-      { '<leader>gd', '<CMD>Gitsigns diffthis<CR>',                                   desc = 'Git diff this' },
+      { '<leader>gd', "<CMD>lua require('gitsigns').diffthis()<CR>",                  desc = 'Git diff this' },
       { '<leader>gw', '<CMD>Gitsigns toggle_word_diff<CR>',                           desc = 'Git toggle word diff' },
       { '<leader>g-', '<CMD>Gitsigns toggle_deleted<CR>',                             desc = 'Git toggle deleted' },
       { '<leader>gp', '<CMD>Gitsigns preview_hunk<CR>',                               desc = 'Git preview hunk' },
@@ -48,4 +48,26 @@ return {
       { '<leader>gB', function() require('gitsigns').blame() end,                     desc = 'Git blame buffer' },
     }
   },
+  {
+    'sindrets/diffview.nvim',
+    cond = not vim.g.vscode,
+    lazy = false,
+    keys = {
+      {
+        '<leader>gD',
+        function()
+          local lib = require 'diffview.lib'
+          local view = lib.get_current_view()
+          if view then
+            -- Current tabpage is a Diffview; close it
+            vim.cmd(":DiffviewClose")
+          else
+            -- No open Diffview exists: open a new one
+            vim.cmd(":DiffviewOpen")
+          end
+        end,
+        desc = 'Git diff'
+      },
+    }
+  }
 }

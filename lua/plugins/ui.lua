@@ -75,10 +75,10 @@ return {
       map('n', '<leader>l', '<Cmd>BufferNext<CR>', opts)
 
       -- Close
-      map('n', '<leader>c', '<Cmd>BufferClose<CR>', opts)
-      map('n', '<leader>C', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
-      map('n', '<leader>cl', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
-      map('n', '<leader>cr', '<Cmd>BufferCloseBuffersRight<CR>', opts)
+      map('n', '<leader>x', '<Cmd>BufferClose<CR>', opts)
+      map('n', '<leader>X', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
+      map('n', '<leader>xl', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
+      map('n', '<leader>xr', '<Cmd>BufferCloseBuffersRight<CR>', opts)
       map('n', '<leader>b', '<Cmd>BufferPick<CR>', opts)
       map('n', '<leader>B', '<Cmd>BufferPickDelete<CR>', opts)
     end,

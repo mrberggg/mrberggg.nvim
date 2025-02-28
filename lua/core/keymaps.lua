@@ -11,6 +11,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>w', '<Cmd>w<CR>', { desc = 'Save buffer' })
 vim.keymap.set('n', '<leader>p', '<C-^>', { desc = 'Reopen previous buffer' })
+vim.keymap.set('n', '<leader>P', '<CMD>wincmd p | q<CR>', { desc = 'Reopen previous window' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>o', 'gcc', { desc = 'Comment', remap = true })
 
