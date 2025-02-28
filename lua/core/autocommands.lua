@@ -9,7 +9,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Automatically format the buffer before saving
 vim.api.nvim_create_autocmd('BufWritePre', {
-  callback = function() vim.lsp.buf.format() end,
+  pattern = '*',
+  callback = function()
+    -- Format if LSP exists
+    local client = vim.lsp.get_active_clients({ bufnr = 0 })[1]
+    if client and client.supports_method("textDocument/formatting") then
+      vim.lsp.buf.format()
+    end
+  end
 })
 
 -- No unneeded borders around vim https://github.com/neovim/neovim/issues/16572#issuecomment-1954420136
@@ -28,7 +35,7 @@ vim.api.nvim_create_autocmd({ 'UIEnter', 'ColorScheme' }, {
 vim.api.nvim_create_autocmd('UILeave', {
   callback = function()
     if modified then
-      io.write('\027]111\027\\')
+      io.write '\027]111\027\\'
     end
   end,
 })
