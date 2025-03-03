@@ -77,8 +77,8 @@ return {
       -- Close
       map('n', '<leader>x', '<Cmd>BufferClose<CR>', opts)
       map('n', '<leader>X', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
-      map('n', '<leader>xl', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
-      map('n', '<leader>xr', '<Cmd>BufferCloseBuffersRight<CR>', opts)
+      map('n', '<leader>xh', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
+      map('n', '<leader>xl', '<Cmd>BufferCloseBuffersRight<CR>', opts)
       map('n', '<leader>b', '<Cmd>BufferPick<CR>', opts)
       map('n', '<leader>B', '<Cmd>BufferPickDelete<CR>', opts)
     end,
@@ -104,4 +104,5 @@ return {
       require('tiny-inline-diagnostic').setup()
     end,
   },
+  { 'kevinhwang91/nvim-bqf' },
 }
