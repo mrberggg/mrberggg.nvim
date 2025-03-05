@@ -18,3 +18,5 @@ vim.keymap.set('n', '<leader>rn', function()
 end, { desc = 'Find in files' })
 
 vim.keymap.set('n', '<leader>;', '<Cmd>set invrelativenumber<CR>', { desc = 'Toggle relative numbers' })
+
+vim.opt.swapfile = false
