@@ -34,7 +34,7 @@ return {
         },
         completion = {
           ghost_text = { enabled = false },
-          menu = { auto_show = true }
+          menu = { auto_show = false }
         },
       },
       completion = {
