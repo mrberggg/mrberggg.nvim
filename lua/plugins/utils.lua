@@ -37,6 +37,7 @@ return {
   },
   {
     'folke/ts-comments.nvim',
+    cond = not vim.g.vscode,
     lazy = true,
     event = 'VeryLazy',
     opts = {},

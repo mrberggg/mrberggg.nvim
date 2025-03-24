@@ -45,10 +45,10 @@ require('lazy').setup({
 
 -- [[ Include config files ]]
 require 'core.options'
-require 'core.autocommands'
 
 if vim.g.vscode then
   require 'core.keymaps-vscode'
 else
   require 'core.keymaps'
+  require 'core.autocommands'
 end

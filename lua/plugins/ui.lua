@@ -85,6 +85,7 @@ return {
   },
   {
     'kevinhwang91/nvim-ufo',
+    cond = not vim.g.vscode,
     dependencies = 'kevinhwang91/promise-async',
     config = function()
       require('ufo').setup {
@@ -98,11 +99,20 @@ return {
   },
   {
     'rachartier/tiny-inline-diagnostic.nvim',
+    cond = not vim.g.vscode,
     event = 'VeryLazy',
     priority = 1000, -- needs to be loaded in first
     config = function()
       require('tiny-inline-diagnostic').setup()
     end,
   },
-  { 'kevinhwang91/nvim-bqf' },
+  {
+    'kevinhwang91/nvim-bqf',
+    cond = not vim.g.vscode,
+  },
+  {
+    'folke/trouble.nvim',
+    cond = not vim.g.vscode,
+    opts = {},
+  }
 }
