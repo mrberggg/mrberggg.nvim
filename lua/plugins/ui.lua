@@ -84,29 +84,6 @@ return {
     end,
   },
   {
-    'kevinhwang91/nvim-ufo',
-    cond = not vim.g.vscode,
-    dependencies = 'kevinhwang91/promise-async',
-    config = function()
-      require('ufo').setup {
-        provider_selector = function(bufnr, filetype, buftype)
-          return { 'treesitter', 'indent' }
-        end,
-      }
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-    end,
-  },
-  {
-    'rachartier/tiny-inline-diagnostic.nvim',
-    cond = not vim.g.vscode,
-    event = 'VeryLazy',
-    priority = 1000, -- needs to be loaded in first
-    config = function()
-      require('tiny-inline-diagnostic').setup()
-    end,
-  },
-  {
     'kevinhwang91/nvim-bqf',
     cond = not vim.g.vscode,
   },

@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   callback = function()
     -- Format if LSP exists
-    local client = vim.lsp.get_active_clients({ bufnr = 0 })[1]
+    local client = vim.lsp.get_clients({ bufnr = 0 })[1]
     if not vim.g.vscode and client and client.supports_method("textDocument/formatting") then
       vim.lsp.buf.format()
     end

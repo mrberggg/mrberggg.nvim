@@ -81,6 +81,10 @@ vim.opt.foldlevelstart = 99          -- start with no folds closed
 vim.opt.foldenable = true
 vim.opt.viewoptions = 'folds,cursor' -- Store in session
 vim.opt.sessionoptions = 'blank,buffers,folds,globals,help,resize,tabpages,terminal,winpos,winsize'
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldtext = ""
+vim.opt.fillchars:append({fold = " "})
 
 -- Diagnostics
-vim.diagnostic.config { virtual_text = false }
+vim.diagnostic.config({ virtual_lines = { current_line = true } })
