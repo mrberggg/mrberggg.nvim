@@ -14,8 +14,10 @@ vim.keymap.set('n', '<leader>p', '<C-^>', { desc = 'Reopen previous buffer' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>o', 'gcc', { desc = 'Comment', remap = true })
 
-vim.keymap.set('n', '|', '<C-w>v', { desc = 'Split window' })
+vim.keymap.set('n', '|', '<C-w>v', { desc = 'Split window vertically' })
+vim.keymap.set('n', '_', '<C-w>s', { desc = 'Split window horizontally' })
 
 vim.keymap.set('n', '<leader>i', '<Cmd>echo fnamemodify(expand("%"), ":~:.")<CR>', { desc = 'Present directory' })
 
-vim.keymap.set('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', { desc = 'Go to definition' })
+vim.keymap.set('n', 'gd', '<C-]>', { desc = '[G]o to [d]efinition' })
+vim.keymap.set('n', '<leader>.', ':lua vim.lsp.buf.code_action()<CR>', { desc = '[C]ode [A]ction' })

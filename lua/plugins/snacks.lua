@@ -62,7 +62,7 @@ return {
       },
       keys = {
         jump = {
-          ['['] = {
+          ['('] = {
             min_size = 1, -- allow single line scopes
             bottom = false,
             cursor = false,
@@ -70,7 +70,7 @@ return {
             treesitter = { blocks = { enabled = false } },
             desc = 'jump to top edge of scope',
           },
-          [']'] = {
+          [')'] = {
             min_size = 1, -- allow single line scopes
             bottom = true,
             cursor = false,
@@ -78,7 +78,7 @@ return {
             treesitter = { blocks = { enabled = false } },
             desc = 'jump to bottom edge of scope',
           },
-        },
+        }
       },
     },
     scratch = { enabled = false },
@@ -93,13 +93,6 @@ return {
     words = { enabled = true },
   },
   keys = {
-    {
-      'Rn',
-      function()
-        Snacks.rename.rename_file()
-      end,
-      desc = 'Rename File',
-    },
     {
       '<leader>gg',
       function()
@@ -134,6 +127,7 @@ return {
               },
             },
           },
+          mode = 'normal',
         }
       end,
       desc = 'Buffers',
@@ -215,13 +209,6 @@ return {
         Snacks.explorer.open()
       end,
     },
-    {
-      '<leader>gb',
-      function()
-        Snacks.picker.git_branches()
-      end,
-    },
-
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {

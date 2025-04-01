@@ -13,10 +13,6 @@ vim.opt.relativenumber = true
 -- Enable mouse mode
 vim.opt.mouse = 'a'
 
--- Remove status bar
-vim.opt.showmode = false
-vim.opt.laststatus = 0
-
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
@@ -84,7 +80,7 @@ vim.opt.sessionoptions = 'blank,buffers,folds,globals,help,resize,tabpages,termi
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.foldtext = ""
-vim.opt.fillchars:append({fold = " "})
+vim.opt.fillchars:append({ fold = " " })
 
 -- Diagnostics
 vim.diagnostic.config({ virtual_lines = { current_line = true } })

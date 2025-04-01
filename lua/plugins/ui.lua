@@ -68,20 +68,18 @@ return {
       'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
-    config = function()
-      local map = vim.api.nvim_set_keymap
-      local opts = { noremap = true, silent = true }
-      map('n', '<leader>h', '<Cmd>BufferPrevious<CR>', opts)
-      map('n', '<leader>l', '<Cmd>BufferNext<CR>', opts)
-
-      -- Close
-      map('n', '<leader>x', '<Cmd>BufferClose<CR>', opts)
-      map('n', '<leader>X', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
-      map('n', '<leader>xh', '<Cmd>BufferCloseBuffersLeft<CR>', opts)
-      map('n', '<leader>xl', '<Cmd>BufferCloseBuffersRight<CR>', opts)
-      map('n', '<leader>b', '<Cmd>BufferPick<CR>', opts)
-      map('n', '<leader>B', '<Cmd>BufferPickDelete<CR>', opts)
-    end,
+    lazy = false,
+    opts = {},
+    keys = {
+      { '<leader>h',  '<Cmd>BufferPrevious<CR>',           { desc = 'Previous buffer' } },
+      { '<leader>l',  '<Cmd>BufferNext<CR>',               { desc = 'Next buffer' } },
+      { '<leader>x',  '<Cmd>BufferClose<CR>',              { desc = 'Close buffer' } },
+      { '<leader>X',  '<Cmd>BufferCloseAllButCurrent<CR>', { desc = 'Close all but current buffer' } },
+      { '<leader>xh', '<Cmd>BufferCloseBuffersLeft<CR>',   { desc = 'Close all buffers to the left' } },
+      { '<leader>xl', '<Cmd>BufferCloseBuffersRight<CR>',  { desc = 'Close all buffers to the right' } },
+      { '<leader>b',  '<Cmd>BufferPick<CR>',               { desc = 'Pick buffer' } },
+      { '<leader>B',  '<Cmd>BufferPickDelete<CR>',         { desc = 'Pick buffer to delete' } },
+    }
   },
   {
     'kevinhwang91/nvim-bqf',
@@ -91,5 +89,11 @@ return {
     'folke/trouble.nvim',
     cond = not vim.g.vscode,
     opts = {},
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    cond = not vim.g.vscode,
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {}
   }
 }

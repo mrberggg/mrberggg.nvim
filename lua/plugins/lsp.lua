@@ -52,42 +52,6 @@ return {
 
         lspconfig[server].setup(config)
       end
-
-      --  This function gets run when an LSP attaches to a particular buffer.
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
-        callback = function(event)
-          -- Create a function that lets us more easily define mappings specific
-          -- for LSP related items. It sets the mode, buffer and description for us each time.
-          local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-          end
-
-          map('rn', vim.lsp.buf.rename, '[R]e[n]ame')
-          map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-          map('<leader>.', ':lua vim.lsp.buf.code_action()<CR>', '[C]ode [A]ction')
-          map('K', function()
-            local winid = require('ufo').peekFoldedLinesUnderCursor()
-            if not winid then
-              vim.lsp.buf.hover()
-            end
-          end, 'Hover info')
-
-          -- Highlight references of the word under your cursor when your cursor rests there for a little while.
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.server_capabilities.documentHighlightProvider then
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-              buffer = event.buf,
-              callback = vim.lsp.buf.document_highlight,
-            })
-
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              callback = vim.lsp.buf.clear_references,
-            })
-          end
-        end,
-      })
     end,
   },
   {
