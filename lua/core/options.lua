@@ -83,4 +83,4 @@ vim.o.foldtext = ""
 vim.opt.fillchars:append({ fold = " " })
 
 -- Diagnostics
-vim.diagnostic.config({ virtual_lines = { current_line = true } })
+vim.diagnostic.config({ virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } } })
