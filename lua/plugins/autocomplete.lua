@@ -1,6 +1,7 @@
 return {
   {
     'echasnovski/mini.pairs',
+    cond = not vim.g.vscode,
     opts = {
       modes = { insert = true, command = true, terminal = false },
       -- skip autopair when next character is one of these
@@ -38,6 +39,7 @@ return {
         },
       },
       completion = {
+        menu = { border = 'single' },
         list = {
           selection = {
             preselect = false,
@@ -45,7 +47,6 @@ return {
           },
         },
       },
-
       keymap = {
         preset = 'enter',
         ['<C-j>'] = { 'select_next', 'fallback' },
