@@ -29,13 +29,13 @@ return {
     opts = {
       cmdline = {
         keymap = {
-          preset = 'enter',
+          preset = 'default',
           ['<C-j>'] = { 'select_next', 'fallback' },
           ['<C-k>'] = { 'select_prev', 'fallback' },
         },
         completion = {
           ghost_text = { enabled = false },
-          menu = { auto_show = false }
+          menu = { auto_show = true }
         },
       },
       completion = {
