@@ -71,8 +71,8 @@ vim.opt.softtabstop = 2
 vim.opt.hidden = true
 
 -- Folds
-vim.opt.foldcolumn = '0'             -- '0' is not bad
-vim.opt.foldlevel = 99               -- Needs to be big for nvim-ufo
+vim.opt.foldcolumn = '0'
+vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99          -- start with no folds closed
 vim.opt.foldenable = true
 vim.opt.viewoptions = 'folds,cursor' -- Store in session

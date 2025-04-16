@@ -12,13 +12,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   callback = function()
     local filetype = vim.bo.filetype
-    if filetype == "typescriptreact" or filetype == "javascriptreact" or "filetype" == "typescript" or filetype == "javascript" then
-      return
-    end
-    -- Format if LSP exists
-    local client = vim.lsp.get_clients({ bufnr = 0 })[1]
-    if client and client.supports_method("textDocument/formatting") then
-      vim.lsp.buf.format()
+    if filetype ~= "typescriptreact" and filetype ~= "javascriptreact" and filetype ~= "typescript" and filetype ~= "javascript" then
+      local client = vim.lsp.get_clients({ bufnr = 0 })[1]
+      -- Format if LSP exists
+      if client and client.supports_method("textDocument/formatting") then
+        print(filetype)
+        vim.lsp.buf.format()
+      end
     end
   end
 })
