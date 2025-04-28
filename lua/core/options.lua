@@ -81,6 +81,3 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.foldtext = ""
 vim.opt.fillchars:append({ fold = " " })
-
--- Diagnostics
-vim.diagnostic.config({ virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } } })

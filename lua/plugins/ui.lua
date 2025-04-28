@@ -86,6 +86,13 @@ return {
     cond = not vim.g.vscode,
   },
   {
+    'stevearc/quicker.nvim',
+    event = "FileType qf",
+    ---@module "quicker"
+    ---@type quicker.SetupOptions
+    opts = {},
+  },
+  {
     'folke/trouble.nvim',
     cond = not vim.g.vscode,
     opts = {},
@@ -95,5 +102,16 @@ return {
     cond = not vim.g.vscode,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {}
-  }
+  },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy", -- Or `LspAttach`
+    priority = 1000,    -- needs to be loaded in first
+    config = function()
+      require('tiny-inline-diagnostic').setup({
+        preset = "classic",
+      })
+      vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
+    end,
+  },
 }
