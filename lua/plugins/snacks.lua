@@ -101,22 +101,6 @@ return {
       desc = 'Lazygit',
     },
     {
-      '*',
-      function()
-        Snacks.words.jump(vim.v.count1, true)
-      end,
-      desc = 'Next Reference',
-      mode = { 'n', 't' },
-    },
-    {
-      '#',
-      function()
-        Snacks.words.jump(-vim.v.count1, true)
-      end,
-      desc = 'Prev Reference',
-      mode = { 'n', 't' },
-    },
-    {
       '<leader><leader>',
       function()
         Snacks.picker.buffers {
