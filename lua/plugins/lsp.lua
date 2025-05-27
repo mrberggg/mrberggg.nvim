@@ -28,7 +28,6 @@ return {
         jsonls = {},
         markdown_oxide = {},
         pyright = {},
-        volar = {},
       },
     },
     config = function(_, opts)

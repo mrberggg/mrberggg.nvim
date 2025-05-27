@@ -101,7 +101,9 @@ return {
     'nvim-lualine/lualine.nvim',
     cond = not vim.g.vscode,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {}
+    opts = {
+      extensions = { 'quickfix', 'avante' }
+    }
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",

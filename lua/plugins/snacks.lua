@@ -168,13 +168,6 @@ return {
       desc = 'Resume last search'
     },
     {
-      '<leader>fo',
-      function()
-        Snacks.picker.treesitter()
-      end,
-      desc = 'Find symbols'
-    },
-    {
       '<leader>fq',
       function()
         Snacks.picker.qflist()

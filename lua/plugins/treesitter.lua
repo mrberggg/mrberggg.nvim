@@ -1,12 +1,10 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master',
     cond = not vim.g.vscode,
     event = 'VeryLazy',
     build = ':TSUpdate',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
     opts = {
       ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'javascript', 'json', 'tsx', 'regex', 'vue' },
       auto_install = true,
