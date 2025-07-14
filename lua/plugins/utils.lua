@@ -9,8 +9,9 @@ return {
   },
   {
     'sQVe/sort.nvim',
-    lazy = true,
-    event = 'BufEnter',
+    config = function()
+      require('sort').setup({})
+    end,
   },
   {
     'gregorias/coerce.nvim',

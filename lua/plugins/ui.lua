@@ -98,12 +98,8 @@ return {
     opts = {},
   },
   {
-    'nvim-lualine/lualine.nvim',
-    cond = not vim.g.vscode,
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {
-      extensions = { 'quickfix', 'avante' }
-    }
+    "sschleemilch/slimline.nvim",
+    opts = {}
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",

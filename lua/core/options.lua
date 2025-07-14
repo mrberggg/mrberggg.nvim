@@ -81,3 +81,6 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.foldtext = ""
 vim.opt.fillchars:append({ fold = " " })
+
+-- Statusline
+vim.opt.laststatus = 3 -- global statusline
