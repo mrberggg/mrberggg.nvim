@@ -29,6 +29,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   command = "EslintFixAll",
 })
 
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { "*.lua", "*.py", "*.json", "*.md", "*.html", "*.css", "*.scss", "*.yaml", "*.yml" },
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
 -- No unneeded borders around vim https://github.com/neovim/neovim/issues/16572#issuecomment-1954420136
 local modified = false
 vim.api.nvim_create_autocmd({ 'UIEnter', 'ColorScheme' }, {
