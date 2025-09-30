@@ -39,8 +39,6 @@ return {
         automatic_installation = true,
       }
 
-      local lspconfig = require 'lspconfig'
-
       -- LSP servers and clients are able to communicate to each other what features they support.
       for server, config in pairs(opts.servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
@@ -49,7 +47,8 @@ return {
           lineFoldingOnly = true,
         }
 
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
       end
     end,
   },
@@ -78,8 +77,8 @@ return {
       },
     },
     config = function()
-      require('lspconfig.configs').vtsls = require('vtsls')
-          .lspconfig -- set default server config, optional but recommended
+      local vtsls_config = require('vtsls').lspconfig
+      vim.lsp.config('vtsls', vtsls_config)
     end,
     keys = {
       { '<leader>sr', '<Cmd>VtsExec remove_unused_imports<CR>', desc = 'TypeScript remove unused imports' },

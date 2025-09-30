@@ -23,11 +23,22 @@ return {
     'folke/flash.nvim',
     event = 'VeryLazy',
     ---@type Flash.Config
-    config = true,
+    config = function()
+      require('flash').setup({
+        modes = {
+          search = {
+            enabled = false,
+          },
+          char = {
+            enabled = false,
+          },
+        },
+      })
+    end,
     opts = {},
     keys = {
       {
-        's',
+        "'",
         mode = { 'n', 'x', 'o' },
         function()
           require('flash').jump()

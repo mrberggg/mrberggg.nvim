@@ -1,6 +1,6 @@
 return {
   {
-    'echasnovski/mini.pairs',
+    'nvim-mini/mini.pairs',
     cond = not vim.g.vscode,
     opts = {
       modes = { insert = true, command = true, terminal = false },
@@ -61,9 +61,6 @@ return {
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
-      per_filetype = {
-        codecompanion = { "codecompanion" },
-      }
     },
     opts_extend = { 'sources.default' },
   },
