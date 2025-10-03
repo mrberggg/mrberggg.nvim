@@ -69,7 +69,9 @@ return {
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
     lazy = false,
-    opts = {},
+    opts = {
+      exclude_ft = { 'terminal' },
+    },
     keys = {
       { '<leader>h',  '<Cmd>BufferPrevious<CR>',           { desc = 'Previous buffer' } },
       { '<leader>l',  '<Cmd>BufferNext<CR>',               { desc = 'Next buffer' } },

@@ -21,3 +21,7 @@ vim.keymap.set('n', '<leader>i', '<Cmd>echo fnamemodify(expand("%"), ":~:.")<CR>
 
 vim.keymap.set('n', 'gd', '<C-]>', { desc = '[G]o to [d]efinition' })
 vim.keymap.set('n', '<leader>.', ':lua vim.lsp.buf.code_action()<CR>', { desc = '[C]ode [A]ction' })
+
+vim.keymap.set('n', 'r', "'", { desc = '[C]ode [A]ction' })
+
+vim.keymap.set('n', 'zz', 'za', { desc = 'Toggle fold' })
