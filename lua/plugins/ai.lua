@@ -33,6 +33,11 @@ return {
         desc = "Sidekick Select Prompt",
       },
       {
+        "<leader>as",
+        function() require("sidekick.cli").toggle({ focus = true }) end,
+        desc = "Sidekick Toggle CLI",
+      },
+      {
         "<c-.>",
         function() require("sidekick.cli").focus() end,
         mode = { "n", "x", "i", "t" },

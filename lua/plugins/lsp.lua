@@ -27,7 +27,23 @@ return {
         html = {},
         jsonls = {},
         markdown_oxide = {},
-        pyright = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+          before_init = function(_, config)
+            local Path = require('plenary.path')
+            local venv = vim.fn.trim(vim.fn.system('poetry env info --path 2>/dev/null'))
+            if venv and venv ~= '' and vim.v.shell_error == 0 then
+              config.settings.python.pythonPath = Path:new(venv, 'bin', 'python'):absolute()
+            end
+          end,
+        },
       },
     },
     config = function(_, opts)
