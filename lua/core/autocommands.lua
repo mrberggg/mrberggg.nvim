@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 -- Automatically run ESLint on save for JavaScript and TypeScript files
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = { '*.ts', '*.tsx', '*.js', '*.jsx' },
-  command = "EslintFixAll",
+  command = "LspEslintFixAll",
 })
 
 vim.api.nvim_create_autocmd('BufWritePre', {

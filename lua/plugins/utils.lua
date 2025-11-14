@@ -20,31 +20,77 @@ return {
     config = true,
   },
   {
-    'folke/flash.nvim',
-    event = 'VeryLazy',
-    ---@type Flash.Config
-    config = function()
-      require('flash').setup({
-        modes = {
-          search = {
-            enabled = false,
+    "folke/flash.nvim",
+    opts = {
+      highlight = {
+        backdrop = false,
+      },
+      jump = {
+        autojump = true,
+        nohlsearch = true,
+      },
+      -- labels = "asdfqwerzxcv", -- Limit labels to left side of the keyboard
+      modes = {
+        char = {
+          char_actions = function()
+            return {
+              [";"] = "next",
+              ["F"] = "left",
+              ["f"] = "right",
+            }
+          end,
+          enabled = true,
+          keys = { "f", "F", "t", "T", ";" },
+          highlight = {
+            backdrop = false,
           },
-          char = {
-            enabled = false,
+          jump_labels = false,
+          multi_line = true,
+        },
+        search = {
+          enabled = true,
+          highlight = {
+            backdrop = false,
+          },
+          jump = {
+            autojump = false,
           },
         },
-      })
-    end,
-    opts = {},
-    keys = {
-      {
-        "'",
-        mode = { 'n', 'x', 'o' },
-        function()
-          require('flash').jump()
-        end,
-        desc = 'Flash',
+      },
+      prompt = {
+        win_config = { border = "none" },
+      },
+      search = {
+        wrap = true,
       },
     },
-  },
+  }
+
+  --   'folke/flash.nvim',
+  --   event = 'VeryLazy',
+  --   ---@type Flash.Config
+  --   config = function()
+  --     require('flash').setup({
+  --       modes = {
+  --         search = {
+  --           enabled = false,
+  --         },
+  --         char = {
+  --           enabled = false,
+  --         },
+  --       },
+  --     })
+  --   end,
+  --   opts = {},
+  --   keys = {
+  --     {
+  --       "'",
+  --       mode = { 'n', 'x', 'o' },
+  --       function()
+  --         require('flash').jump()
+  --       end,
+  --       desc = 'Flash',
+  --     },
+  --   },
+  -- },
 }
