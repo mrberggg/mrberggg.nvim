@@ -24,6 +24,9 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
+-- Disable swap files
+vim.opt.swapfile = false
+
 -- Case-insensitive searching UNLESS one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
