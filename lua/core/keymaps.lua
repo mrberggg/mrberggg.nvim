@@ -10,6 +10,7 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 vim.keymap.set('n', '<leader>w', '<Cmd>w<CR>', { desc = 'Save buffer' })
+vim.keymap.set('n', '<leader>W', '<Cmd>noa w<CR>', { desc = 'Save buffer without autocommands (no formatting)' })
 vim.keymap.set('n', '<leader>p', '<C-^>', { desc = 'Reopen previous buffer' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>o', 'gcc', { desc = 'Comment', remap = true })
