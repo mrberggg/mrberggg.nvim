@@ -7,35 +7,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Automatically format the buffer before saving, excluding TS and JS files
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*',
-  callback = function()
-    local filetype = vim.bo.filetype
-    if filetype ~= "typescriptreact" and filetype ~= "javascriptreact" and filetype ~= "typescript" and filetype ~= "javascript" then
-      local client = vim.lsp.get_clients({ bufnr = 0 })[1]
-      -- Format if LSP exists
-      if client and client.supports_method("textDocument/formatting") then
-        print(filetype)
-        vim.lsp.buf.format()
-      end
-    end
-  end
-})
-
--- Automatically run ESLint on save for JavaScript and TypeScript files
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = { '*.ts', '*.tsx', '*.js', '*.jsx' },
-  command = "LspEslintFixAll",
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = { "*.lua", "*.py", "*.json", "*.md", "*.html", "*.css", "*.scss", "*.yaml", "*.yml" },
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-})
-
 -- No unneeded borders around vim https://github.com/neovim/neovim/issues/16572#issuecomment-1954420136
 local modified = false
 vim.api.nvim_create_autocmd({ 'UIEnter', 'ColorScheme' }, {
