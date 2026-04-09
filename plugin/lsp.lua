@@ -29,6 +29,13 @@ local servers = {
   cssls = {},
   html = {},
   jsonls = {},
+  yamlls = {
+    settings = {
+      yaml = {
+        keyOrdering = false,
+      },
+    },
+  },
   markdown_oxide = {},
   pyright = {
     settings = {
