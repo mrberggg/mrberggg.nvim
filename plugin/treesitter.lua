@@ -17,6 +17,16 @@ require('ts-forge').setup {
 vim.treesitter.language.register('tsx', { 'typescriptreact' })
 vim.treesitter.language.register('json', { 'jsonc' })
 
+-- Upstream grammar queries (e.g. tree-sitter-javascript highlights.scm) use
+-- `is?`/`is-not?` predicates from nvim-treesitter's locals module. ts-forge
+-- ships queries verbatim without that runtime, so register no-op handlers.
+-- Default "not local" is correct for the common case (flagging globals/builtins).
+for _, name in ipairs { 'is?', 'is-not?' } do
+  vim.treesitter.query.add_predicate(name, function(_, _, _, pred)
+    return pred[1] == 'is-not?'
+  end, { force = true, all = false })
+end
+
 -- Use Vim's built-in syntax highlighting; treesitter is used only for
 -- indent, folds, and incremental selection (parser attaches lazily).
 vim.api.nvim_create_autocmd('FileType', {

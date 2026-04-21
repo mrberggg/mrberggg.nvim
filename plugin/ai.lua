@@ -20,11 +20,5 @@ vim.keymap.set('n', '<tab>', function()
   end
 end, { expr = true, desc = 'Goto/Apply Next Edit Suggestion' })
 
-vim.keymap.set({ 'n', 'x' }, '<leader>aa', function() require('sidekick.cli').prompt() end,
-  { desc = 'Sidekick Select Prompt' })
-vim.keymap.set('n', '<leader>as', function() require('sidekick.cli').toggle({ focus = true }) end,
-  { desc = 'Sidekick Toggle CLI' })
-vim.keymap.set({ 'n', 'x', 'i', 't' }, '<c-.>', function() require('sidekick.cli').focus() end,
+vim.keymap.set({ 'n', 'x', 'i', 't' }, '<c-.>', function() require('sidekick.cli').focus({ name = 'claude' }) end,
   { desc = 'Sidekick Switch Focus' })
-vim.keymap.set('n', '<c-,>', function() require('sidekick.cli').toggle({ name = 'claude', focus = true }) end,
-  { desc = 'Sidekick Toggle Claude' })

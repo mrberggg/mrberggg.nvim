@@ -23,8 +23,6 @@ end, { desc = 'Git prev hunk' })
 
 -- Diffs
 vim.keymap.set('n', '<leader>gd', "<CMD>lua require('gitsigns').diffthis()<CR>", { desc = 'Git diff this' })
-vim.keymap.set('n', '<leader>gw', '<CMD>Gitsigns toggle_word_diff<CR>', { desc = 'Git toggle word diff' })
-vim.keymap.set('n', '<leader>g-', '<CMD>Gitsigns toggle_deleted<CR>', { desc = 'Git toggle deleted' })
 vim.keymap.set('n', '<leader>gp', '<CMD>Gitsigns preview_hunk<CR>', { desc = 'Git preview hunk' })
 
 -- Manage hunks
@@ -38,4 +36,4 @@ vim.keymap.set('n', '<leader>gq', function() require('gitsigns').setqflist('all'
   { desc = 'Add all modified files to QF list' })
 vim.keymap.set('n', '<leader>gb', function() require('gitsigns').blame_line({ full = true }) end,
   { desc = 'Git blame line' })
-vim.keymap.set('n', '<leader>gB', function() require('gitsigns').blame() end, { desc = 'Git blame buffer' })
+vim.keymap.set('n', '<leader>gb', function() require('gitsigns').blame() end, { desc = 'Git blame buffer' })
