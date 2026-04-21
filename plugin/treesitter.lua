@@ -1,13 +1,10 @@
 if vim.g.vscode then return end
 
 vim.pack.add {
-  'https://github.com/reybits/ts-forge.nvim',
+  'https://github.com/arborist-ts/arborist.nvim',
 }
 
--- Neovim 0.12 bundles parsers for: c, lua, markdown, markdown_inline, query, vim, vimdoc
--- ts-forge installs additional parsers async on startup.
-require('ts-forge').setup {
-  auto_install = true,
+require('arborist').setup {
   ensure_installed = {
     'typescript', 'tsx', 'javascript', 'json',
     'html', 'css', 'bash', 'yaml', 'python',
@@ -16,26 +13,6 @@ require('ts-forge').setup {
 
 vim.treesitter.language.register('tsx', { 'typescriptreact' })
 vim.treesitter.language.register('json', { 'jsonc' })
-
--- Upstream grammar queries (e.g. tree-sitter-javascript highlights.scm) use
--- `is?`/`is-not?` predicates from nvim-treesitter's locals module. ts-forge
--- ships queries verbatim without that runtime, so register no-op handlers.
--- Default "not local" is correct for the common case (flagging globals/builtins).
-for _, name in ipairs { 'is?', 'is-not?' } do
-  vim.treesitter.query.add_predicate(name, function(_, _, _, pred)
-    return pred[1] == 'is-not?'
-  end, { force = true, all = false })
-end
-
--- Use Vim's built-in syntax highlighting; treesitter is used only for
--- indent, folds, and incremental selection (parser attaches lazily).
-vim.api.nvim_create_autocmd('FileType', {
-  callback = function(ev)
-    if pcall(vim.treesitter.get_parser, ev.buf) then
-      vim.bo[ev.buf].indentexpr = "v:lua.require'vim.treesitter'.indentexpr()"
-    end
-  end,
-})
 
 -- Incremental selection via treesitter nodes
 local sel_node = nil
