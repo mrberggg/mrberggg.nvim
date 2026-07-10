@@ -21,6 +21,14 @@ vim.keymap.set('n', '_', '<C-w>s', { desc = 'Split window horizontally' })
 vim.keymap.set('n', '<leader>i', '<Cmd>echo fnamemodify(expand("%"), ":~:.")<CR>', { desc = 'Present directory' })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]o to [d]efinition' })
+
+-- Jump between diagnostics, errors only (skip warnings/hints/info)
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump { count = 1, severity = vim.diagnostic.severity.ERROR }
+end, { desc = 'Next error diagnostic' })
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump { count = -1, severity = vim.diagnostic.severity.ERROR }
+end, { desc = 'Previous error diagnostic' })
 vim.keymap.set('n', '<leader>.', ':lua vim.lsp.buf.code_action()<CR>', { desc = '[C]ode [A]ction' })
 
 vim.keymap.set('n', 'r', "'", { desc = '[C]ode [A]ction' })
