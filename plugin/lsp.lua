@@ -6,7 +6,6 @@ vim.pack.add {
   'https://github.com/williamboman/mason-lspconfig.nvim',
   { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('*') },
   'https://github.com/neovim/nvim-lspconfig',
-  'https://github.com/yioneko/nvim-vtsls',
 }
 
 -- Mason
@@ -14,7 +13,6 @@ require('mason').setup {}
 
 -- LSP servers
 local servers = {
-  vtsls = {},
   eslint = {},
   lua_ls = {
     settings = {
@@ -26,6 +24,7 @@ local servers = {
       },
     },
   },
+  tsgo = {},
   cssls = {},
   html = {},
   jsonls = {},
@@ -71,11 +70,15 @@ for server, config in pairs(servers) do
   vim.lsp.enable(server)
 end
 
--- nvim-vtsls
-local vtsls_config = require('vtsls').lspconfig
-vim.lsp.config('vtsls', vtsls_config)
+local function ts_action(kind)
+  return function()
+    vim.lsp.buf.code_action {
+      apply = true,
+      context = { only = { kind }, diagnostics = {} },
+    }
+  end
+end
 
--- vtsls keymaps
-vim.keymap.set('n', '<leader>sr', '<Cmd>VtsExec remove_unused_imports<CR>', { desc = 'TypeScript remove unused imports' })
-vim.keymap.set('n', '<leader>si', '<Cmd>VtsExec add_missing_imports<CR>', { desc = 'TypeScript add missing imports' })
-vim.keymap.set('n', '<leader>se', '<Cmd>VtsExec restart_tsserver<CR>', { desc = 'Restart typescript server' })
+vim.keymap.set('n', '<leader>sr', ts_action('source.removeUnusedImports'), { desc = 'TypeScript remove unused imports' })
+vim.keymap.set('n', '<leader>so', ts_action('source.organizeImports'), { desc = 'TypeScript organize imports' })
+vim.keymap.set('n', '<leader>si', ts_action('source.addMissingImports'), { desc = 'TypeScript add missing imports' })

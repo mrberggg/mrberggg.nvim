@@ -31,7 +31,7 @@
       "src": "https://github.com/github/copilot.vim"
     },
     "delta.nvim": {
-      "rev": "c7326af72902529c7c7dfddef767897c8d6eedea",
+      "rev": "c1ad770cb879548d7c723e957f2ae94509ade884",
       "src": "https://github.com/alex35mil/delta.nvim"
     },
     "flash.nvim": {
@@ -39,7 +39,7 @@
       "src": "https://github.com/folke/flash.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "2038c666bd9d8a0b7349a0b6ee00dc83104b9ecf",
+      "rev": "eb60cc7b94c46005237fd34170d76f3a089a90aa",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "mason-lspconfig.nvim": {
@@ -51,7 +51,7 @@
       "src": "https://github.com/williamboman/mason.nvim"
     },
     "mini.pairs": {
-      "rev": "db0fac0a25884183650352ccf92b362a41ed2e9c",
+      "rev": "b1fd9df3bb4a41c8f45778a3859ee80ef6b367e3",
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "noice.nvim": {
@@ -63,7 +63,7 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim": {
-      "rev": "e068ab5f8261f23f6f71ffd8791ae40315b77b9c",
+      "rev": "05e8787020dcfdb937bf2ff23855ea2415b4e072",
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-bqf": {
@@ -75,7 +75,7 @@
       "src": "https://github.com/brenoprata10/nvim-highlight-colors"
     },
     "nvim-lspconfig": {
-      "rev": "3371bf298c1f56efc26771ee961f461176958fb5",
+      "rev": "d224a1920728ba129880efc700d4a0180ac4ecbb",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-scrollbar": {
@@ -103,7 +103,7 @@
       "src": "https://github.com/yioneko/nvim-vtsls"
     },
     "nvim-web-devicons": {
-      "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
+      "rev": "dad71387de386a946b123079d0e53f23028f3abd",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "persistence.nvim": {
@@ -139,7 +139,7 @@
       "src": "https://github.com/sQVe/sort.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "e930d0a46031645040d5492595b46cdf6ab3514f",
+      "rev": "6264451f14119d63a52580e5198d6baf8518b0b2",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "trouble.nvim": {
@@ -159,7 +159,7 @@
       "src": "https://github.com/afonsofrancof/worktrees.nvim"
     },
     "yazi.nvim": {
-      "rev": "36e634c807ab2bef81685a7cd107a107e67e0900",
+      "rev": "668cd1f1045c4b929b6292bafc084d5c699770e6",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
