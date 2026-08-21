@@ -24,7 +24,7 @@ local servers = {
       },
     },
   },
-  tsgo = {},
+  tsc = {},
   cssls = {},
   html = {},
   jsonls = {},
