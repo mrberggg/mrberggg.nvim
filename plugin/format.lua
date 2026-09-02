@@ -2,32 +2,19 @@ if vim.g.vscode then return end
 
 vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
 
-local eslint_filetypes = {
-  javascript = true,
-  javascriptreact = true,
-  typescript = true,
-  typescriptreact = true,
-}
+-- oxlint applies its safe lint fixes, then oxfmt does the actual formatting.
+-- conform runs them in order, so oxfmt always gets the last word.
+local oxc = { 'oxlint', 'oxfmt' }
 
 require('conform').setup {
   formatters_by_ft = {
     lua = { 'stylua' },
     python = { 'black' },
+    javascript = oxc,
+    javascriptreact = oxc,
+    typescript = oxc,
+    typescriptreact = oxc,
+    vue = oxc,
   },
-  format_on_save = function(bufnr)
-    -- Let the ESLint LSP handle TS/JS via BufWritePre below so that save
-    -- formatting matches :LspEslintFixAll exactly.
-    if eslint_filetypes[vim.bo[bufnr].filetype] then return nil end
-    return { timeout_ms = 500, lsp_format = 'fallback' }
-  end,
+  format_on_save = { timeout_ms = 1000, lsp_format = 'fallback' },
 }
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-  group = vim.api.nvim_create_augroup('eslint-fix-on-save', { clear = true }),
-  callback = function(args)
-    if not eslint_filetypes[vim.bo[args.buf].filetype] then return end
-    local clients = vim.lsp.get_clients { bufnr = args.buf, name = 'eslint' }
-    if #clients == 0 then return end
-    vim.cmd('LspEslintFixAll')
-  end,
-})

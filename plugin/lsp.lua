@@ -13,7 +13,7 @@ require('mason').setup {}
 
 -- LSP servers
 local servers = {
-  eslint = {},
+  oxlint = {},
   lua_ls = {
     settings = {
       Lua = {
